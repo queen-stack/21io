@@ -12,8 +12,12 @@ import InputBase from '@material-ui/core/InputBase';
 
 // -=- This is the styling used for the navbar component -=-
 const useStyles = makeStyles((theme) => ({
+  background: {
+    background: '#505b61',
+
+  },
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -70,7 +74,7 @@ export default function Navbar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.background}>
         <Toolbar>
             <div className={classes.search}>
                 <div className={classes.searchIcon}>
