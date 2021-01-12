@@ -7,6 +7,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.slide-container {
+    height: 50rem;
+    width: 100%;
+    
+    object-fit: cover;
+    position: relative;
+    /*min-height: -webkit-fill-available;
+    */
+    background-size: cover;
+    background-image: url('./images/sliderBackground.jpeg');
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
