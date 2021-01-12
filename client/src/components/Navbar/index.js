@@ -7,6 +7,9 @@ import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 
+// installing Material UI, look at https://material-ui.com/getting-started/installation/
+// editing the navbar look at https://material-ui.com/components/app-bar/
+
 // -=- This is the styling used for the navbar component -=-
 const useStyles = makeStyles((theme) => ({
   background: {
