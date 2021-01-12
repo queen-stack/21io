@@ -57,6 +57,10 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       width: '20ch',
     },
+    loginLogoutDiv: {
+        flexDirection: "row-reverse",
+        alignItems: 'right'
+    }
   },
 }));
 
@@ -73,7 +77,7 @@ export default function Navbar() {
                 <SearchIcon />
                 </div>
                 <InputBase
-                placeholder="Search…"
+                placeholder="Search for Movies…"
                 classes={{
                     root: classes.inputRoot,
                     input: classes.inputInput,
@@ -81,8 +85,14 @@ export default function Navbar() {
                 inputProps={{ 'aria-label': 'search' }}
                 />
             </div>
-          <Button className="login-btn" color="inherit">Login</Button>
-          <Button className="logout-btn" color="inherit">Log Out</Button>
+            <div>
+                <Button color="inherit">Wish List</Button>
+                <Button color="inherit">History</Button>
+            </div>
+            <div className={classes.loginLogoutDiv}>
+                <Button color="inherit">Signup</Button>
+                <Button color="inherit">Login</Button>
+            </div>
         </Toolbar>
       </AppBar>
     </div>
