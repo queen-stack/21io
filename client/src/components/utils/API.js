@@ -53,7 +53,7 @@ export const getMe = (token) => {
   // make a search to google books api
   // https://www.googleapis.com/books/v1/volumes?q=harry+potter
   // https://api.themoviedb.org/3/movie/550?api_key=d70418f0a8a661cab8f71cdbdb3da10d
-  export const searchGoogleBooks = (query) => {
-    return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+  export const searchMovie = (query) => {
+    return fetch(`https://api.themoviedb.org/3/movie/${query}`);
   };
   
