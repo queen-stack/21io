@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -9,8 +8,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+// the movieImages need to be imported. Images are not working right now but putting this here for testing and reference
 const movieImages = 'https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg'
 
+// the useStyles is for the material UI styling, this is imported from "import { makeStyles } from '@material-ui/core/styles'"
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -20,6 +21,8 @@ const useStyles = makeStyles({
   },
 });
 
+// DiscoverMovieList() imports all the titles to the landing page
+// This uses the Material UI cards -> https://material-ui.com/components/cards/#Media
 const DiscoverMovieList = (props) => {
   // styling for the Material UI cards
   const classes = useStyles();
