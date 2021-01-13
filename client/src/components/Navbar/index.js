@@ -11,6 +11,7 @@ import InputBase from '@material-ui/core/InputBase';
 // editing the navbar look at https://material-ui.com/components/app-bar/
 
 // -=- This is the styling used for the navbar component -=-
+// link color is a custom CSS color, in index.css under ".MuiToolbar-root"
 const useStyles = makeStyles((theme) => ({
   background: {
     background: '#505b61',
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2)
   },
   title: {
     flexGrow: 1,

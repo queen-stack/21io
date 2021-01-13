@@ -21,7 +21,7 @@ function App() {
   // movieRequest() for the movie data in the API
   const movieRequest = async (props) => {
     // API Url calls
-    const featured = 'https://api.themoviedb.org/3/movie/550?api_key=d70418f0a8a661cab8f71cdbdb3da10d'
+    // const featured = 'https://api.themoviedb.org/3/movie/550?api_key=d70418f0a8a661cab8f71cdbdb3da10d'
     const discover = 'https://api.themoviedb.org/3/discover/movie?api_key=d70418f0a8a661cab8f71cdbdb3da10d&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
 
     // Getting data from the API
