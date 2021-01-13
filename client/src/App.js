@@ -1,4 +1,10 @@
 import React, { useEffect, useState } from 'react';
+
+// importing Material UI styling
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+
 import './App.css';
 import Slideshow from '../src/components/Slideshow'; // Slideshow Component
 import Navbar from '../src/components/Navbar'; // Navbar component
@@ -45,7 +51,11 @@ function App() {
       <Navbar />
       <Slideshow />
       <section className='movie-section'>
-        <DiscoverMovieList movies={movies}/>
+        <Grid container spacing={6}>
+          <Grid container item xs={12} spacing={3}>
+            <DiscoverMovieList movies={movies}/>
+          </Grid>
+        </Grid>
       </section>
     </div>
   );

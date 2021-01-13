@@ -12,6 +12,11 @@ body {
   color: #e5a631;
 }
 
+.MuiGrid-root {
+  justify-content: center;
+  align-items: center;
+}
+
 .slide-container {
     height: 50rem;
     width: 100%;

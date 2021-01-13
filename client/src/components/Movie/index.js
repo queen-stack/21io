@@ -59,6 +59,7 @@ const DiscoverMovieList = (props) => {
                 </Typography>
             </CardActions>
         </Card>
+        
       ))}
       </>
       
