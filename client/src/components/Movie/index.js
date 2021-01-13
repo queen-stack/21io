@@ -1,29 +1,59 @@
+
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const movieImages = 'https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg'
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+});
+
+const DiscoverMovieList = (props) => {
+  // styling for the Material UI cards
+  const classes = useStyles();
 
 
-// -=- NOTES -=-
-// The css for each movie title is custom (inside the index.css file)
+  return (
+      <>
+          {props.movies.map((movie, index) => (
+        <Card className={classes.root}>
+            <CardActionArea>
+                <CardMedia
+                className={classes.media}
+                image={movie.poster_path && movieImages}
+                title="Contemplative Reptile"
+                />
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                    {movie.title}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                    {movie.overview}
+                </Typography>
+                </CardContent>
+            </CardActionArea>
+            <CardActions>
+                <Typography variant="body2" color="textSecondary" component="p">
+                Avg. Rating {movie.vote_average}
+                </Typography>
+            </CardActions>
+        </Card>
+      ))}
+      </>
+      
+  );
+}
 
-// This is the image path for each card header
-const api_img = 'https://image.tmdb.org/t/p/w1280'
-
-const movie = ({ title, poster_path, overview, vote_average }) => (
-        <div className='movie-container'>
-            <div>
-                <div className="card-info-container">
-                    <h3 className='card-title'>{title}</h3>
-                    <div
-                        className="movie">
-                        <img src={api_img + poster_path}
-                        alt={title} 
-                        className='movie-img'
-                        />
-                        <p className='card-description'>{overview}</p>
-                        <p className='votes'>Rating: {vote_average}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-)
-
-export default movie;
+export default DiscoverMovieList
