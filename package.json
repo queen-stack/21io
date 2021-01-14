@@ -15,10 +15,11 @@
     "url": "git+https://github.com/queen-stack/21io.git"
   },
   "keywords": [],
-  "author": "Jenifer Queen", 
+  "author": "Jenifer Queen",
   "license": "ISC",
   "dependencies": {
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "concurrently": "^5.2.0"

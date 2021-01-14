@@ -66,7 +66,7 @@ const SearchInput = (props) => {
                     input: classes.inputInput,
                 }}
                 value={props.value}
-                onChange={(event)=> props.setSearch(event.target.value)}
+                onChange={(event)=> props.setSearchedTitles(event.target.value)}
                 inputProps={{ 'aria-label': 'search' }}
                 />
             </div>

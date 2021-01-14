@@ -28,22 +28,22 @@ const DiscoverMovieList = (props) => {
         <Card className={classes.root} key={movie.id} id='movieCard'>
             <CardActionArea>
                 <CardMedia
-                className={classes.media}
-                image={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
-                title={movie.title}
-                alt={movie.title}
-                id='card-img'
+                  className={classes.media}
+                  image={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
+                  title={movie.title}
+                  alt={movie.title}
+                  id='card-img'
                 />
                 <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                    {movie.title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    {movie.overview}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                Avg. Rating {movie.vote_average}
-                </Typography>
+                  <Typography gutterBottom variant="h5" component="h2">
+                      {movie.title}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                      {movie.overview}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    Avg. Rating {movie.vote_average}
+                  </Typography>
                 </CardContent>
             </CardActionArea>
         </Card>
