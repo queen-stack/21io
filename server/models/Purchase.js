@@ -3,8 +3,8 @@ const { Schema } = require('mongoose');
 const purchaseSchema = new Schema(
     {
         purchaseId: {
-            type: int,
-            required: true,
+            type: Number,
+            required: true
         },
         movie: {
             type: Schema.Types.ObjectId,
