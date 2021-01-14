@@ -34,9 +34,6 @@ const DiscoverMovieList = (props) => {
   // styling for the Material UI cards
   const classes = useStyles();
 
-  const movieImages = 'https://image.tmdb.org/t/p/w1280/'
-
-
   return (
       <>
           {props.movies.map((movie, index) => (
@@ -54,15 +51,13 @@ const DiscoverMovieList = (props) => {
                     {movie.title}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    {movie.overview}
+                    {/* movie.overview */}
                 </Typography>
-                </CardContent>
-            </CardActionArea>
-            <CardActions>
                 <Typography variant="body2" color="textSecondary" component="p">
                 Avg. Rating {movie.vote_average}
                 </Typography>
-            </CardActions>
+                </CardContent>
+            </CardActionArea>
         </Card>
         
       ))}
