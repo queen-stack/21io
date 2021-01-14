@@ -11,6 +11,8 @@ import Typography from '@material-ui/core/Typography';
 /*
 // the movieImages need to be imported. Images are not working right now but putting this here for testing and reference
 const movieImages = 'https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg'
+const movieImages = 'https://image.tmdb.org/t/p/w1280'
+
 // or
 // the movieImages need to be imported. Images are not working right now but putting this here for testing and reference
 const movieImages = `https://api.themoviedb.org/3/movie/${movie.id}/images?api_key=d70418f0a8a661cab8f71cdbdb3da10d&language=en-US`
@@ -32,6 +34,8 @@ const DiscoverMovieList = (props) => {
   // styling for the Material UI cards
   const classes = useStyles();
 
+  const movieImages = 'https://image.tmdb.org/t/p/w1280/'
+
 
   return (
       <>
@@ -40,9 +44,10 @@ const DiscoverMovieList = (props) => {
             <CardActionArea>
                 <CardMedia
                 className={classes.media}
-                image={movie.poster_path}
+                image={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
                 title={movie.title}
-                background-image={movie.poster_path}
+                alt={movie.title}
+                id='card-img'
                 />
                 <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
