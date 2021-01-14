@@ -11,12 +11,16 @@ body {
 .MuiToolbar-root {
   color: #e5a631;
 }
-
+/* Grid custom CSS */
 .MuiGrid-root {
   justify-content: center;
-  align-items: center;
 }
 
+.MuiPaper-root {
+  margin: 1rem;
+}
+
+/* Slider custom CSS */
 .slide-container {
     height: 50rem;
     width: 100%;

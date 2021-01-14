@@ -51,8 +51,8 @@ function App() {
       <Navbar />
       <Slideshow />
       <section className='movie-section'>
-        <Grid container spacing={6}>
-          <Grid container item xs={12} spacing={3}>
+        <Grid container spacing={0}>
+          <Grid container item xs={12} spacing={0}>
             <DiscoverMovieList movies={movies}/>
           </Grid>
         </Grid>
