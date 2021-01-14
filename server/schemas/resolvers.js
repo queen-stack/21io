@@ -5,46 +5,24 @@ const purchaseSchema = require('../models/Purchase');
 
 const resolvers = {
   Query: {
-    me: async (parent, args, context) => {
-      if(context.user) {
+    user: async (parent, args, context) => {
+      if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          //.populate('wishList')
-         
-      
         return userData;
       }
-
       throw new AuthenticationError('Not logged in');
     },
 
-    // get all wishList
-    wishList: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return WishList.find(params).sort({ createdAt: -1 });
-    },
-  
-    // get one wishList
-    comment: async (parent, { _id }) => {
-        return WishList.findOne({ _id });
-    },
-
-    // get all users
-    users: async () => {
-      return User.find()
+    // get a user by email
+    user: async (parent, { email }) => {
+      return User.findOne({ email })
         .select('-__v -password')
-        .populate('wishList')
-    },
-    
-    // get a user by username
-    user: async (parent, { username }) => {
-      return User.findOne({ username })
-        .select('-__v -password')
-        .populate('wishList')
     },
   },
 
   Mutation: {
+    // OK
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
@@ -52,13 +30,14 @@ const resolvers = {
       return { token, user };
     },
 
+    // OK
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
       }
-      
+
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
@@ -69,42 +48,11 @@ const resolvers = {
       return { token, user };
     },
 
-    addWishList: async (parent, args, history) => {
-      if (context.user) {
-        const wishList = await WishList.create({ ...args, username: history.user.username });
-    
-        await User.findByIdAndUpdate(
-          { _id: history.user._id },
-          { $push: { history: purchaseSchema._id } },
-          { new: true }
-        );
-    
-        return history;
-      }
-    
-      throw new AuthenticationError('You need to be logged in!');
-    },
-
-    addReaction: async (parent, { commentId, reactionBody }, context) => {
-      if (context.user) {
-        const updatedComment = await Comment.findOneAndUpdate(
-          { _id: commentId },
-          { $push: { reactions: { reactionBody, username: context.user.username } } },
-          { new: true, runValidators: true }
-        );
-    
-        return updatedHistory;
-      }
-    
-      throw new AuthenticationError('You need to be logged in!');
-    },
-
-  
-    saveMovie: async (parent, { input }, context) => {
+    addMovie: async (parent, { input }, context) => {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { savedMovies: input } },
+          { $addToSet: { wishList: input } },
           { new: true }
         );
         return updatedUser;
@@ -112,17 +60,42 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!')
     },
 
+    // OK
     removeMovie: async (parent, args, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedMovies: { movieId: args.movieId } } },
+          { $pull: { wishList: { movieId: args.movieId } } },
           { new: true }
         );
         return updatedUser;
       }
       throw new AuthenticationError('You need to be logged in!')
-    } 
+    },
+
+    purchaseMovie: async (parent, args, context) => {
+      if (context.user) {
+
+        // There are three steps to this process:
+        // 1) remove the move from the wishlist (error if not found)
+        // 2) create a Purchase with the Movie data
+        // 3) add the newly created Purchase to the users purchaseHistory
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { wishList: { movieId: args.movieId } } },
+          { new: true }
+        );
+
+        updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { purchaseHistory: { movieId: args.movieId } } },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
   }
 };
 

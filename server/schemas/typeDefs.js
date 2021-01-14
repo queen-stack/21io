@@ -30,9 +30,8 @@ const typeDefs = gql`
     }
 
     type Query {
-        user: User
+        user: User     
         purchase(_id: ID!): Purchase
-        checkout(movie: Movie!): Purchase
     }
 
     type Auth {

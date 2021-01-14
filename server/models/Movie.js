@@ -3,7 +3,7 @@ const { Schema } = require('mongoose');
 const movieSchema = new Schema(
   {
     movieId: {
-      type: String,
+      type: Number,
       required: true,
     },
     name: {
