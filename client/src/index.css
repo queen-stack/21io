@@ -20,6 +20,11 @@ body {
   margin: 2rem;
 }
 
+#card-img {
+  width: auto;
+  height: 30rem;
+}
+
 /* Slider custom CSS */
 .slide-container {
     height: 50rem;
