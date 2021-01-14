@@ -7,6 +7,85 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Navbar custom CSS */
+.MuiToolbar-root {
+  color: #e5a631;
+}
+/* Grid custom CSS */
+.MuiGrid-root {
+  justify-content: center;
+}
+
+#movieCard {
+  margin: 2rem;
+  width: -webkit-fill-available;
+}
+
+#card-img {
+  width: auto;
+  height: 30rem;
+}
+
+/* Slider custom CSS */
+.slide-container {
+    height: 50rem;
+    width: 100%;
+    
+    object-fit: cover;
+    position: relative;
+    /*min-height: -webkit-fill-available;
+    */
+    background-size: cover;
+    background-image: url('./images/sliderBackground.jpeg');
+}
+
+/*
+.movie-img {
+  height: 11rem;
+  width: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+  background-size: cover;
+  border-radius: 20px;
+}
+*/
+
+/* CSS for each movie card and section */
+
+.movie-section {
+  background-color: black;
+}
+
+.movie {
+  margin: 1rem;
+  width: 250px;
+}
+
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: none;
+  margin: none;
+}
+
+.movie-img {
+  max-width: 100%;
+}
+
+.card-title {
+  background-color: #e5a631;
+  padding: none;
+  margin: none;
+}
+.description {
+  background-color: white;
+}
+
+.card-info-container {
+  background-color: #e5a631;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 
+// import sliderBackground from '../../images/sliderBackground.jpeg';
 import pinocchio from '../../images/pinocchio.jpg'
 import wonderWoman from '../../images/wonderWoman.jpg';
 import newOTWorld from '../../images/newsOTWorld.jpg';
@@ -19,22 +20,58 @@ const Slideshow = () => {
       <div className="slide-container">
         <Slide>
           <div className="each-slide">
-            <div style={{'backgroundImage': `url(${slideImages[0]})`}}>
+            <div className='sliderImage' style={{
+              'backgroundImage': `url(${slideImages[0]})`,
+              'height': '40rem',
+              'width': '30rem',
+              'marginLeft': 'auto',
+              'marginRight': 'auto',
+              'marginTop': '5rem',
+              'backgroundSize': 'cover',
+              'borderRadius': '20px'
+              }}>
               <span>Slide 1</span>
             </div>
           </div>
           <div className="each-slide">
-            <div style={{'backgroundImage': `url(${slideImages[1]})`}}>
+            <div className='sliderImage' style={{
+              'backgroundImage': `url(${slideImages[1]})`,
+              'height': '40rem',
+              'width': '30rem',
+              'marginLeft': 'auto',
+              'marginRight': 'auto',
+              'marginTop': '5rem',
+              'backgroundSize': 'cover',
+              'borderRadius': '20px'
+              }}>
               <span>Slide 2</span>
             </div>
           </div>
           <div className="each-slide">
-            <div style={{'backgroundImage': `url(${slideImages[2]})`}}>
+            <div className='sliderImage' style={{
+              'backgroundImage': `url(${slideImages[2]})`,
+              'height': '40rem',
+              'width': '30rem',
+              'marginLeft': 'auto',
+              'marginRight': 'auto',
+              'marginTop': '5rem',
+              'backgroundSize': 'cover',
+              'borderRadius': '20px'
+            }}>
               <span>Slide 3</span>
             </div>
           </div>
           <div className="each-slide">
-            <div style={{'backgroundImage': `url(${slideImages[3]})`}}>
+            <div className='sliderImage' style={
+              {'backgroundImage': `url(${slideImages[3]})`,
+                'height': '40rem',
+                'width': '30rem',
+                'marginLeft': 'auto',
+                'marginRight': 'auto',
+                'marginTop': '5rem',
+                'backgroundSize': 'cover',
+                'borderRadius': '20px'
+                }}>
               <span>Slide 3</span>
             </div>
           </div>
