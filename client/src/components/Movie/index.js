@@ -36,7 +36,7 @@ const DiscoverMovieList = (props) => {
   return (
       <>
           {props.movies.map((movie, index) => (
-        <Card className={classes.root} key={movie.id}>
+        <Card className={classes.root} key={movie.id} id='movieCard'>
             <CardActionArea>
                 <CardMedia
                 className={classes.media}
