@@ -35,6 +35,7 @@ const DiscoverMovies = () => {
     <div>
       <section className='movie-section'>
         <Grid container spacing={0}>
+        <h2 className='discoverTitle'>Discover new movie titles</h2>
           <Grid container item xs={12} spacing={0}>
             <DiscoverMovieList movies={movies}/>
           </Grid>

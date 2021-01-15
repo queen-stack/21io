@@ -25,6 +25,8 @@ const SearchMovie = () => {
   // setting data from API
   if (responseJson.results) {
     setMovies(responseJson.results)
+    } else if (!responseJson.results){
+      return <h3>Search for Titles</h3>;
     }
 }
 
@@ -35,12 +37,14 @@ useEffect (() => {
 
   return (
     <div>
+    <div className="input-container">
     <input
     className='searchInput'
       value={searchValue}
       onChange={(event) => setSearchedTitles(event.target.value)}
       placeholder='Search for Movie Titles'
       ></input>
+      </div>
     <Grid container spacing={0}>
       <Grid container item xs={12} spacing={0}>
         <DiscoverMovieList movies={movies} setSearchedTitles={setSearchedTitles}/>

@@ -2,6 +2,9 @@
 import React from 'react';
 import navLogo from '../../images/logo2_yellow.svg';
 
+// importing auth here
+// import Auth from '../utils/Auth';
+
 // import Material UI styles
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -33,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar(props) {
 
   const classes = useStyles();
+
+  // this is for the logged in user
+  // const loggedIn = Auth.loggedIn();
 
   return (
     <div className={classes.root}>

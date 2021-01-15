@@ -16,6 +16,22 @@ body {
   height: 80px;
   padding: 10px;
 }
+
+.searchInput {
+  width: 20rem;
+  margin: 2rem;
+  padding: 10px;
+  border-radius: 25px
+}
+
+.input-container {
+  text-align: center;
+}
+
+.discoverTitle{
+  color: white;
+  font-size: 3rem;
+}
 /* Grid custom CSS */
 .MuiGrid-root {
   justify-content: center;
