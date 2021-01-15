@@ -18,7 +18,8 @@
   "author": "Jenifer Queen",
   "license": "ISC",
   "dependencies": {
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "jwt-decode": "^3.1.2"
   },
   "devDependencies": {
     "concurrently": "^5.2.0"

@@ -14,7 +14,7 @@ module.exports = {
     if (req.headers.authorization) {
       token = token.split(' ').pop().trim();
     }
-
+    let decodedData; 
     if (!token) {
       // return res.status(400).json({ message: 'You have no token!' });
       return req;
@@ -22,13 +22,13 @@ module.exports = {
 
     // verify token and get user data out of it
     try {
-      const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      req.user = data;
+      decodedData = jwt.decode(token);
+      req.userId = decodedData.sub;
+      console.log(decodedData);
     } catch {
       console.log('Invalid token');
       // return res.status(400).json({ message: 'invalid token!' });
     }
-
     // return updated request object
     return req;
   },

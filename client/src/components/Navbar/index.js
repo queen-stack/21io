@@ -1,6 +1,9 @@
 // -=- Import section -=-
 import React, { useState } from 'react';
 import SearchInput from '../Search';
+import GoogleButton from '../GoogleButton';
+
+import Auth from '../../utils/auth';
 
 // import Material UI styles
 import { makeStyles } from '@material-ui/core/styles';
@@ -41,14 +44,16 @@ export default function Navbar() {
       <AppBar position="static" className={classes.background}>
         <Toolbar>
             <SearchInput search={search} setSearch={setSearch}/>
+            { Auth.loggedIn() ? (
+              <>
             <div>
                 <Button color="inherit">Wish List</Button>
                 <Button color="inherit">History</Button>
             </div>
-            <div className={classes.loginLogoutDiv}>
-                <Button color="inherit">Signup</Button>
-                <Button color="inherit">Login</Button>
-            </div>
+            </>
+            ):(
+            <GoogleButton/> 
+            )}
         </Toolbar>
       </AppBar>
     </div>
