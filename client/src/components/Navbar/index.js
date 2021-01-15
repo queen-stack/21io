@@ -1,7 +1,8 @@
 // -=- Import section -=-
 import React, { useState } from 'react';
 import SearchInput from '../Search';
-import GoogleButton from '../GoogleButton';
+import GoogleSignIn from '../GoogleSignIn';
+import GoogleSignOut from '../GoogleSignOut';
 
 import Auth from '../../utils/auth';
 
@@ -50,9 +51,10 @@ export default function Navbar() {
                 <Button color="inherit">Wish List</Button>
                 <Button color="inherit">History</Button>
             </div>
+            <GoogleSignOut/>
             </>
             ):(
-            <GoogleButton/> 
+            <GoogleSignIn/> 
             )}
         </Toolbar>
       </AppBar>

@@ -1,5 +1,5 @@
 import React from 'react';
-// import Auth from "../../utils/auth";
+import Auth from "../../utils/auth";
 import { GoogleLogin } from 'react-google-login';
 // import { refreshTokenSetup } from '../../utils/helpers';
 
@@ -8,18 +8,8 @@ function GoogleButton() {
   const onSuccess = async (googleUser) => {
     
     console.log(googleUser);
-    // const idToken = googleUser.getAuthResponse().id_token
-    // refreshTokenSetup(res); 
-    // Auth.login(idToken);
-    // var xhr = new XMLHttpRequest();
-    // xhr.open('POST', 'https://localhost:3001/graphql');
-    // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    // xhr.onload = function() {
-    // console.log('Signed in as: ' + xhr.responseText);
-    // };
-    // xhr.send('idtoken=' + accessToken);
-    // //  
-    
+    const idToken = googleUser.getAuthResponse().id_token;
+    Auth.login(idToken);
     
     };
     const onFailure = (res) => {
