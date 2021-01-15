@@ -1,6 +1,5 @@
 // -=- Import section -=-
-import React, { useState } from 'react';
-import SearchInput from '../SearchInput'; 
+import React from 'react';
 import navLogo from '../../images/logo2_yellow.svg';
 
 // import Material UI styles
@@ -32,8 +31,6 @@ const useStyles = makeStyles((theme) => ({
 
 // -=- Navbar structure -=-
 export default function Navbar(props) {
-  const [searchValue, setSearchedTitles] = useState('');
-
 
   const classes = useStyles();
 
@@ -42,9 +39,9 @@ export default function Navbar(props) {
       <AppBar position="static" className={classes.background}>
         <Toolbar>
             <div>
-                <Button color="inherit" href='/'><img className="logoImage" src={navLogo}></img></Button>
+                <Button color="inherit" href='/'><img alt='21io' className="logoImage" src={navLogo}></img></Button>
                 <Button color="inherit" href='/search'>Search for Movies</Button>
-                <Button color="inherit">Wish List</Button>
+                <Button color="inherit" href='/wishlist'>Wish List</Button>
                 <Button color="inherit">History</Button>
             </div>
             <div className={classes.loginLogoutDiv}>
