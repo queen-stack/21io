@@ -11,6 +11,11 @@ body {
 .MuiToolbar-root {
   color: #e5a631;
 }
+
+.logoImage {
+  height: 80px;
+  padding: 10px;
+}
 /* Grid custom CSS */
 .MuiGrid-root {
   justify-content: center;

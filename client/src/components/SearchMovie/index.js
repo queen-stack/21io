@@ -12,7 +12,7 @@ const SearchMovie = () => {
   const [ movies, setMovies ] = useState([]);
 
 
- const apiSearch = async (props) => {
+ const apiSearch = async (searchValue) => {
   // key for the api
   const key = process.env.REACT_APP_API_KEY
   // Getting data from the API

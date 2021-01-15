@@ -1,6 +1,7 @@
 // -=- Import section -=-
 import React, { useState } from 'react';
 import SearchInput from '../SearchInput'; 
+import navLogo from '../../images/logo2_yellow.svg';
 
 // import Material UI styles
 import { makeStyles } from '@material-ui/core/styles';
@@ -40,8 +41,9 @@ export default function Navbar(props) {
     <div className={classes.root}>
       <AppBar position="static" className={classes.background}>
         <Toolbar>
-            <SearchInput searchValue={searchValue} setSearchedTitles={setSearchedTitles} onChange={(event)=> props.setSearchedTitles(event.target.value)} />
             <div>
+                <Button color="inherit" href='/'><img className="logoImage" src={navLogo}></img></Button>
+                <Button color="inherit" href='/search'>Search for Movies</Button>
                 <Button color="inherit">Wish List</Button>
                 <Button color="inherit">History</Button>
             </div>
