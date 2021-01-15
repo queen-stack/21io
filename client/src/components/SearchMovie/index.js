@@ -16,7 +16,7 @@ const SearchMovie = () => {
   // key for the api
   const key = process.env.REACT_APP_API_KEY
   // Getting data from the API
-  const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=spiderman&page=1&include_adult=false`);
+  const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${searchValue}&page=1&include_adult=false`);
   // awaiting the json() results
   const responseJson = await response.json();
 
@@ -34,11 +34,19 @@ useEffect (() => {
 }, [searchValue]);
 
   return (
-  <Grid container spacing={0}>
-    <Grid container item xs={12} spacing={0}>
-      <DiscoverMovieList movies={movies} setSearchedTitles={setSearchedTitles}/>
-    </Grid>
+    <div>
+    <input
+    className='searchInput'
+      value={searchValue}
+      onChange={(event) => setSearchedTitles(event.target.value)}
+      placeholder='Search for Movie Titles'
+      ></input>
+    <Grid container spacing={0}>
+      <Grid container item xs={12} spacing={0}>
+        <DiscoverMovieList movies={movies} setSearchedTitles={setSearchedTitles}/>
+      </Grid>
   </Grid>
+    </div>
   );
 }
 
