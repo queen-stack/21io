@@ -23,9 +23,17 @@ const SearchMovie = () => {
   // logging the data in the console and using the results from that data to the landing page
   // console.log(responseJson);
   // setting data from API
+  if (!responseJson.results) {
+    console.log('this should work')
+    return <h1>Find Movie Titles</h1>
+  } else {
+    setMovies(responseJson.results)
+  }
+  /*
   if (responseJson.results) {
     setMovies(responseJson.results)
     }
+    */
 }
 
 // useEffect initiates movieRequest() on page load
@@ -34,20 +42,20 @@ useEffect (() => {
 }, [searchValue]);
 
   return (
-    <div>
-    <div className="input-container">
-    <input
-    className='searchInput'
-      value={searchValue}
-      onChange={(event) => setSearchedTitles(event.target.value)}
-      placeholder='Search for Movie Titles'
-      ></input>
-      </div>
-    <Grid container spacing={0}>
-      <Grid container item xs={12} spacing={0}>
-        <DiscoverMovieList movies={movies} setSearchedTitles={setSearchedTitles}/>
-      </Grid>
-  </Grid>
+    <div className='search-page'>
+      <div className="input-container">
+      <input
+      className='searchInput'
+        value={searchValue}
+        onChange={(event) => setSearchedTitles(event.target.value)}
+        placeholder='Search for Movie Titles'
+        ></input>
+        </div>
+      <Grid container spacing={0}>
+        <Grid container item xs={12} spacing={0}>
+          <DiscoverMovieList movies={movies} setSearchedTitles={setSearchedTitles}/>
+        </Grid>
+    </Grid>
     </div>
   );
 }

@@ -13,7 +13,7 @@ body {
 }
 
 .logoImage {
-  height: 80px;
+  height: 40px;
   padding: 10px;
 }
 
@@ -22,6 +22,10 @@ body {
   margin: 2rem;
   padding: 10px;
   border-radius: 25px
+}
+
+.search-page {
+  background-color: black;
 }
 
 .input-container {
