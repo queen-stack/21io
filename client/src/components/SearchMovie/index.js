@@ -29,6 +29,7 @@ const SearchMovie = () => {
   } else {
     setMovies(responseJson.results)
   }
+  
   /*
   if (responseJson.results) {
     setMovies(responseJson.results)
