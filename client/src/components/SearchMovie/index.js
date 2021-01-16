@@ -21,12 +21,10 @@ const SearchMovie = () => {
   const responseJson = await response.json();
 
   // logging the data in the console and using the results from that data to the landing page
-  console.log(responseJson);
+  // console.log(responseJson);
   // setting data from API
   if (responseJson.results) {
     setMovies(responseJson.results)
-    } else if (!responseJson.results){
-      return <h3>Search for Titles</h3>;
     }
 }
 
