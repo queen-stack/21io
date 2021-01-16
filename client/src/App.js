@@ -7,7 +7,8 @@ import './App.css';
 
 import Landing from './pages/Landing';
 import SearchMovie from './pages/SearchMovie'; 
-import WishList from './pages/WishList';
+// import WishList from './pages/WishList';
+// <Route exact path='/wishlist' component={WishList}/>
 
 function App() {
   return (
@@ -16,7 +17,6 @@ function App() {
         <Switch>
           <Route exact path='/' component={Landing} />
           <Route exact path='/search' component={SearchMovie} />
-          <Route exact path='/wishlist' component={WishList}/>
           <Route render={() => <h1 className='display-2'>Oh No! This is not a page, please redirect back</h1>} />
         </Switch>
       </>

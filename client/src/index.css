@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
 }
 
 /* Navbar custom CSS */
@@ -24,6 +25,11 @@ body {
   border-radius: 25px
 }
 
+.noTitles {
+  text-align: center;
+  color: #e5a631;
+}
+
 .search-page {
   background-color: black;
 }
@@ -33,7 +39,7 @@ body {
 }
 
 .discoverTitle{
-  color: white;
+  color: #e5a631;
   font-size: 3rem;
 }
 /* Grid custom CSS */

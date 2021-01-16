@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import DiscoverMovieList from '../MovieCards';
 
 // This uses the Material UI cards -> https://material-ui.com/components/cards/#Media
-const SearchMovie = () => {
+const SearchMovie = (props) => {
 
   // searchValue is the users search text they insert
   // setSearchedTitles is the search data
@@ -13,34 +13,44 @@ const SearchMovie = () => {
 
 
  const apiSearch = async (searchValue) => {
-  // key for the api
+  if(!searchValue || searchValue === '') {
+    return <h3>Search for Movie Titles</h3>;
+  } else {
+    // key for the api
   const key = process.env.REACT_APP_API_KEY
   // Getting data from the API
   const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${searchValue}&page=1&include_adult=false`);
   // awaiting the json() results
   const responseJson = await response.json();
+  setMovies(responseJson.results)
 
-  // logging the data in the console and using the results from that data to the landing page
-  // console.log(responseJson);
-  // setting data from API
-  if (!responseJson.results) {
-    console.log('this should work')
-    return <h1>Find Movie Titles</h1>
-  } else {
-    setMovies(responseJson.results)
+  console.log(responseJson)
   }
-  
-  /*
-  if (responseJson.results) {
-    setMovies(responseJson.results)
-    }
-    */
 }
 
 // useEffect initiates movieRequest() on page load
 useEffect (() => {
     apiSearch(searchValue)
 }, [searchValue]);
+
+if(!apiSearch(searchValue) || !searchValue) {
+  return(
+    <div>
+      <div className="input-container">
+      <input
+      className='searchInput'
+        value={searchValue}
+        onChange={(event) => setSearchedTitles(event.target.value)}
+        placeholder='Search for Movie Titles'
+        ></input>
+        </div> 
+        <h2 className='noTitles'>Search for Movie Titles</h2>
+        <h4 className='noTitles'>Use the search input to find titles based on a word or by a specific name</h4>
+
+    </div>
+  )
+} 
+
 
   return (
     <div className='search-page'>
@@ -54,7 +64,7 @@ useEffect (() => {
         </div>
       <Grid container spacing={0}>
         <Grid container item xs={12} spacing={0}>
-          <DiscoverMovieList movies={movies} setSearchedTitles={setSearchedTitles}/>
+        <DiscoverMovieList movies={movies} setSearchedTitles={setSearchedTitles}/>
         </Grid>
     </Grid>
     </div>
