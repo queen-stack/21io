@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
 
 // importing Material UI styling
 import Grid from '@material-ui/core/Grid';
@@ -8,6 +10,18 @@ import Slideshow from '../src/components/Slideshow'; // Slideshow Component
 import Navbar from '../src/components/Navbar'; // Navbar component
 import DiscoverMovieList from '../src/components/Movie'; // Movie component
 
+
+const client = new ApolloClient({
+  request: (operation) => {
+    const token = localStorage.getItem('id_token')
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    })
+  },
+  uri: '/graphql',
+})
 
 function App() {
    const [ movies, setMovies ] = useState([]);
@@ -33,17 +47,19 @@ function App() {
   // -=- COMPONENT NOTES -=-
   // <DiscoverMovieList /> component is for the discover API calls
   return (
-    <div className="App">
-      <Navbar />
-      <Slideshow />
-      <section className='movie-section'>
-        <Grid container spacing={0}>
-          <Grid container item xs={12} spacing={0}>
-            <DiscoverMovieList movies={movies}/>
+    <ApolloProvider client={client}>
+      <div className="App">
+        <Navbar />
+        <Slideshow />
+        <section className='movie-section'>
+          <Grid container spacing={0}>
+            <Grid container item xs={12} spacing={0}>
+              <DiscoverMovieList movies={movies}/>
+            </Grid>
           </Grid>
-        </Grid>
-      </section>
-    </div>
+        </section>
+      </div>
+    </ApolloProvider>
   );
 }
 

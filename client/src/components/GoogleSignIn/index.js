@@ -1,7 +1,6 @@
 import React from 'react';
 import Auth from "../../utils/auth";
 import { GoogleLogin } from 'react-google-login';
-// import { refreshTokenSetup } from '../../utils/helpers';
 
 function GoogleButton() {
 
@@ -23,7 +22,7 @@ function GoogleButton() {
         buttonText="LOGIN"
         onSuccess={onSuccess}
         onFailure={onFailure}
-        cookiePolicy='single_host_origin'
+        cookiePolicy={'single_host_origin'}
         />
     </div>
   );
