@@ -1,11 +1,8 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
+const movieSchema = require('./Movie');
 
 const purchaseSchema = new Schema(
     {
-        purchaseId: {
-            type: Number,
-            required: true
-        },
         movie: {
             type: Schema.Types.ObjectId,
             ref: 'Movie',
@@ -18,4 +15,6 @@ const purchaseSchema = new Schema(
     }
 );
 
-module.exports = purchaseSchema;
+const Purchase = model('Purchase', purchaseSchema);
+
+module.exports = Purchase;
