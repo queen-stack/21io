@@ -2,13 +2,13 @@ import React from 'react';
 import Auth from "../../utils/auth";
 import { GoogleLogin } from 'react-google-login';
 
-function GoogleButton() {
+function GoogleSignIn() {
 
   const onSuccess = (googleUser) => {
     
     console.log(googleUser);
     const idToken = googleUser.getAuthResponse().id_token;
-    Auth.login(idToken);
+    Auth.oauthLogin(idToken);
     
     };
     const onFailure = (res) => {
@@ -28,4 +28,4 @@ function GoogleButton() {
   );
 }
 
-export default GoogleButton;
+export default GoogleSignIn;

@@ -22,23 +22,24 @@ module.exports = {
     if (!token) {
       return req;
     }
-
+    
     try {
       // if token was signed locally
-      if(token.length < 500) {
+      // if(token.length < 500) {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
-      } 
+      // } 
       // google token
-      else {
-        decodedData = jwt.decode(token);
-        req.userId = decodedData.sub;
-      }
+      // else {
+      //   decodedData = jwt.decode(token);
+      //   req.userId = decodedData.sub;
+      // }
       // decodedData = jwt.decode(token);
       // req.userId = decodedData.sub;
     } catch { 
       console.log('Invalid token');
     }
+    // console.log(decodedData);
     return req;
   },
 

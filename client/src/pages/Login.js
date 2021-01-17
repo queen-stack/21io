@@ -55,7 +55,7 @@ function Login(props) {
             <p className="error-text" >The provided credentials are incorrect</p>
           </div> : null
         }
-       <Button variant="contained" color="default">
+       <Button type="submit" variant="contained" color="default">
             LOGIN
           </Button>
 

@@ -49,7 +49,7 @@ function Signup(props) {
           id="pwd"
           onChange={handleChange}
         />
-        <Button variant="contained" color="default">
+        <Button type="submit" variant="contained" color="default">
           SIGNUP
         </Button>    
       </form>
