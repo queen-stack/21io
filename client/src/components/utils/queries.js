@@ -1,29 +1,40 @@
 import gql from 'graphql-tag'
 
-export const QUERY_ME = gql`
+export const QUERY_USER = gql`
     {
         me {
             _id
-            username
             email
+            wishListCount
+            wishList {
+                movieId
+                description
+                name
+                image
+            }
+            purchaseHistory {
+                moviePurchase {
+                    movieId
+                    description
+                    name
+                    image
+                }
+                purchaseDate
+            }
         }
     }
 `;
 
-export const QUERY_Movie = gql`
-  query movie($username: String) {
-    thoughts(username: $username) {
-      _id
-      thoughtText
-      createdAt
-      username
-      reactionCount
-      reactions {
-        _id
-        createdAt
-        username
-        reactionBody
-      }
+export const QUERY_PURCHASE = gql `
+    {
+        purchase (email: String!) {
+            moviePurchase {
+                    movieId
+                    description
+                    name
+                    image
+                }
+            purchaseDate
+        }
     }
-  }
 `;
