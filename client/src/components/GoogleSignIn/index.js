@@ -4,7 +4,7 @@ import { GoogleLogin } from 'react-google-login';
 
 function GoogleButton() {
 
-  const onSuccess = async (googleUser) => {
+  const onSuccess = (googleUser) => {
     
     console.log(googleUser);
     const idToken = googleUser.getAuthResponse().id_token;

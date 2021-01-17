@@ -8,7 +8,7 @@ export function pluralize(name, count) {
 export function idbPromise(storeName, method, object) {
   return new Promise((resolve, reject) => {
     //open connection to the database `shop-shop` with the version of 1
-    const request = window.indexedDB.open('shop-shop', 1);
+    const request = window.indexedDB.open('movie-21io', 1);
 
     //create variable to hold reference to the database, transaction (tx), and object store
     let db, tx, store;
@@ -17,9 +17,9 @@ export function idbPromise(storeName, method, object) {
     request.onupgradeneeded = function(e) {
       const db = request.result;
       //create object store for each type of data and set "primary" key index to be the '_id' of the data
-      db.createObjectStore('products', { keyPath: '_id'});
-      db.createObjectStore('categories', { keyPath: '_id'});
-      db.createObjectStore('cart', { keyPath: '_id'});
+      db.createObjectStore('user', { keyPath: '_id'});
+      db.createObjectStore('wishlist', { keyPath: '_id'});
+      db.createObjectStore('history', { keyPath: '_id'});
     };
 
     //handle any errors with connecting

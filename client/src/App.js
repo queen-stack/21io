@@ -10,10 +10,10 @@ import Slideshow from '../src/components/Slideshow'; // Slideshow Component
 import Navbar from '../src/components/Navbar'; // Navbar component
 import DiscoverMovieList from '../src/components/Movie'; // Movie component
 
-
 const client = new ApolloClient({
   request: (operation) => {
     const token = localStorage.getItem('id_token')
+    
     operation.setContext({
       headers: {
         authorization: token ? `Bearer ${token}` : ''
