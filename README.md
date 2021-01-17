@@ -31,7 +31,7 @@ GIVEN a movie search engine
 WHEN I load the search engine
 THEN I am presented with a navbar with options to "Search for Movies", "Signup", "Login" and an input area and "Search" button
 WHEN I enter key search terms into the input area and select "Search" 
-THEN I am presented with several search results, each featuring a movie title, description, image, and a link to that movie's trailer
+THEN I am presented with several search results, each featuring a movie title, description, image
 WHEN I click on the Signup option
 THEN I am presented with two inputs:  email address and a password then a Submit button
 WHEN I enter a valid email address and create a password and click on the Signup button
@@ -43,19 +43,19 @@ THEN I am logged in to the site
 WHEN I am logged in to the site
 THEN the navbar options change to "Search for Movies","Wish List", "History", and "Logout"
 WHEN I am logged in and enter a search term in the input field and click the submit button
-THEN I am presented with several search results, each featuring a movie's title, description, image, and a link to that movie's trailer and a "Save" button
+THEN I am presented with several search results, each featuring a movie's title, description, image and a "Save" button
 WHEN I click on the "Save" button on a movie
 THEN that movie’s information is saved to my wish list 
 WHEN I click on the "Wish List" Navbar option
-THEN I am presented with all of the movies I have saved to my wish list, each featuring the movie's title, description, image, and a link to that movies trailer on the Movies site and a "Remove" button and "Stream" button
-WHEN I click on the "Stream" button for a movie
+THEN I am presented with all of the movies I have saved to my wish list, each featuring the movie's title, description, image, and a link to that movies trailer on the Movies site and a "Remove" button and "Purchase" button
+WHEN I click on the "Purchase" button for a movie
 THEN I am taken to the payment screen to pay online
 WHEN I complete the payment 
 THEN that movie is deleted from my movie wish list and added to my history
 WHEN I click on the "Remove" button for a movie
 THEN that movie is deleted from my saved wish list
 WHEN I click on the "History" navbar option
-THEN I am presented with all the movies I have streamed by : Movie name, Purchase amount, Date, and Time of Purchase
+THEN I am presented with all the movies I have Purchased : Movie name, MovieId, Description, Date
 WHEN I click on the Logout button
 THEN I am logged out of the site and presented with a menu with the options "Search for Movies", "Signup", "Login" and an input area and "Search" button
 

@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 // import schema from Movie.js
 const movieSchema = require('./Movie');
-const purchaseSchema = require('./Purchase');
+const Purchase = require('./Purchase');
 
 const userSchema = new Schema(
   {
@@ -19,7 +19,7 @@ const userSchema = new Schema(
     },
     // set wishList to be an array of data that adheres to the movieSchema
     wishList: [movieSchema],
-    purchaseHistory: [purchaseSchema],
+    purchaseHistory: [Purchase.schema],
   },
   // set this to use virtual below
   {
