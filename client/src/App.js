@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Landing from './pages/Landing';
 import SearchMovie from './pages/SearchMovie'; 
 import Wishlist from './pages/Wishlist';
-import History from './pages/OrderHistory';
+import OrderHistory from './pages/OrderHistory';
 import './App.css';
 // import SearchInput from './components/SearchInput';
 

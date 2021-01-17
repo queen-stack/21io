@@ -5,11 +5,42 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
 }
 
 /* Navbar custom CSS */
 .MuiToolbar-root {
   color: #e5a631;
+}
+
+.logoImage {
+  height: 40px;
+  padding: 10px;
+}
+
+.searchInput {
+  width: 20rem;
+  margin: 2rem;
+  padding: 10px;
+  border-radius: 25px
+}
+
+.noTitles {
+  text-align: center;
+  color: #e5a631;
+}
+
+.search-page {
+  background-color: black;
+}
+
+.input-container {
+  text-align: center;
+}
+
+.discoverTitle{
+  color: #e5a631;
+  font-size: 3rem;
 }
 /* Grid custom CSS */
 .MuiGrid-root {
