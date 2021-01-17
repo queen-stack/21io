@@ -1,49 +1,45 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-// importing Material UI styling
-import Grid from '@material-ui/core/Grid';
-
+import Landing from './pages/Landing';
+import SearchMovie from './pages/SearchMovie'; 
+import Wishlist from './pages/Wishlist';
+import OrderHistory from './pages/OrderHistory';
 import './App.css';
-import Slideshow from '../src/components/Slideshow'; // Slideshow Component
-import Navbar from '../src/components/Navbar'; // Navbar component
-import DiscoverMovieList from '../src/components/Movie'; // Movie component
+// import SearchInput from './components/SearchInput';
 
+const client = new ApolloClient({
+  request: (operation) => {
+    const token = localStorage.getItem('id_token')
+    
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    })
+  },
+  uri: '/graphql',
+})
 
 function App() {
-   const [ movies, setMovies ] = useState([]);
-
-  // movieRequest() for the movie data in the API
-  const movieRequest = async (props) => {
-    // API Url calls
-    const key = process.env.REACT_APP_API_KEY
-    // Getting data from the API
-    const response = await fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + key + '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1');
-    const responseJson = await response.json();
-
-    // logging the data in the console and using the results from that data to the landing page
-    console.log(responseJson);
-    setMovies(responseJson.results)
-  }
-
-  // useEffect initiates movieRequest() on page load
-  useEffect (() => {
-    movieRequest()
-  }, [])
-
-  // -=- COMPONENT NOTES -=-
-  // <DiscoverMovieList /> component is for the discover API calls
   return (
-    <div className="App">
-      <Navbar />
-      <Slideshow />
-      <section className='movie-section'>
-        <Grid container spacing={0}>
-          <Grid container item xs={12} spacing={0}>
-            <DiscoverMovieList movies={movies}/>
-          </Grid>
-        </Grid>
-      </section>
-    </div>
+
+    <ApolloProvider client={client}>
+      <Router>
+      <>
+        <Switch>
+          <Route exact path='/' component={Landing} />
+          <Route exact path='/search' component={SearchMovie} />
+          <Route exact path='/wishlist' component={Wishlist} />
+          <Route exact path='/purchase-history' component={OrderHistory} />
+          <Route render={() => <h1 className='display-2'>Oh No! This is not a page, please redirect back</h1>} />
+        </Switch>
+      </>
+    </Router>
+
+    </ApolloProvider>
   );
 }
 
