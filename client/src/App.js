@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Landing from './pages/Landing';
 import SearchMovie from './pages/SearchMovie'; 
 import Wishlist from './pages/Wishlist';
-import OrderHistory from './pages/OrderHistory';
+import PurchaseHistory from './pages/PurchaseHistory';
 import './App.css';
 // import SearchInput from './components/SearchInput';
 
@@ -33,7 +33,7 @@ function App() {
           <Route exact path='/' component={Landing} />
           <Route exact path='/search' component={SearchMovie} />
           <Route exact path='/wishlist' component={Wishlist} />
-          <Route exact path='/purchase-history' component={OrderHistory} />
+          <Route exact path='/purchase-history' component={PurchaseHistory} />
           <Route render={() => <h1 className='display-2'>Oh No! This is not a page, please redirect back</h1>} />
         </Switch>
       </>

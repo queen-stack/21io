@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_USER } from "../utils/queries";
 
-function OrderHistory() {
+function PurchaseHistory() {
   const { data } = useQuery(QUERY_USER);
   let user;
 
@@ -17,7 +16,7 @@ function OrderHistory() {
       <div className="container my-1">
         {user ? (
           <>
-            <h2>Order History for {user.email}</h2>
+            <h2>Purchase History for {user.email}</h2>
             {/* {user.orders.map((order) => (
               <div key={order._id} className="my-2">
                 <h3>{new Date(parseInt(order.purchaseDate)).toLocaleDateString()}</h3>
@@ -48,4 +47,4 @@ function OrderHistory() {
 
 };
 
-export default OrderHistory;
+export default PurchaseHistory;
