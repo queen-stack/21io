@@ -11,10 +11,18 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   root: {
     maxWidth: 300,
+    textAlign: 'none'
   },
   media: {
     height: 80,
   },
+  Card: {
+    width: 300,
+    margin: 'auto'
+  },
+  Media: {
+    objectFit: 'cover'
+  }
 });
 
 // DiscoverMovieList() imports all the titles to the landing page

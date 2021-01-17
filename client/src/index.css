@@ -59,7 +59,12 @@ body {
 
 #movieCard {
   margin: 2rem;
-  width: -webkit-fill-available;
+  /* width: -webkit-fill-available; */
+  height: fit-content;
+}
+
+.MuiCardActionArea-root {
+  text-align: none;
 }
 
 #card-img {
