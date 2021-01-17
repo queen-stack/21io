@@ -31,7 +31,7 @@ const typeDefs = gql`
 
     type Query {
         user: User     
-        purchase(_id: ID!): Purchase
+        purchase(email: String!): Purchase
     }
 
     type Auth {
@@ -44,8 +44,9 @@ const typeDefs = gql`
         addMovie(input: movieInput): User
         removeMovie(movieId: Int!): User
         purchaseMovie(movieId: Int!): User
-        addPurchased(purchase: Int!): User
     }
 `;
+
+// addPurchased(purchase: Int!): User
 
 module.exports = typeDefs; 

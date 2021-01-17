@@ -18,10 +18,15 @@
   "author": "Jenifer Queen",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "graphql": "^15.4.0",
     "graphql-tag": "^2.11.0",
     "if-env": "^1.0.4",
     "jwt-decode": "^3.1.2"
+=======
+    "if-env": "^1.0.4",
+    "react-router-dom": "^5.2.0"
+>>>>>>> main
   },
   "devDependencies": {
     "concurrently": "^5.2.0"
