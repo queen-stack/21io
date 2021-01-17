@@ -33,7 +33,7 @@ function App() {
           <Route exact path='/' component={Landing} />
           <Route exact path='/search' component={SearchMovie} />
           <Route exact path='/wishlist' component={Wishlist} />
-          <Route exact path='/history' component={Wishlist} />
+          <Route exact path='/history' component={OrderHistory} />
 
           <Route render={() => <h1 className='display-2'>Oh No! This is not a page, please redirect back</h1>} />
         </Switch>
