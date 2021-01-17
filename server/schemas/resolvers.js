@@ -76,6 +76,20 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
+
+  //   addPurchased: async (parent, { purchase }, context) => {
+      
+  //     if (context.user) {
+  //       const purchased = new Order({ purchase });
+
+  //       await User.findByIdAndUpdate(context.user._id, { $push: { purchaseHistory: purchased } });
+
+  //       return purchased;
+  //     }
+
+  //     throw new AuthenticationError('Not logged in');
+  //   },
+
   }
 };
 

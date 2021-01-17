@@ -44,6 +44,7 @@ const typeDefs = gql`
         addMovie(input: movieInput): User
         removeMovie(movieId: Int!): User
         purchaseMovie(movieId: Int!): User
+        addPurchased(purchase: Int!): User
     }
 `;
 
