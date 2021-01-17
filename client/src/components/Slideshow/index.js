@@ -28,8 +28,7 @@ const Slideshow = () => {
               'marginRight': 'auto',
               'marginTop': '5rem',
               'backgroundSize': 'cover',
-              'borderRadius': '10px',
-              'box-shadow': '0 0 9px rgba(0, 0, 0, 0.7)'
+              'boxShadow': '0 0 9px rgba(0, 0, 0, 0.7)'
               }}>
             </div>
           </div>
@@ -42,8 +41,7 @@ const Slideshow = () => {
               'marginRight': 'auto',
               'marginTop': '5rem',
               'backgroundSize': 'cover',
-              'borderRadius': '10px',
-              'box-shadow': '0 0 9px rgba(0, 0, 0, 0.7)'
+              'boxShadow': '0 0 9px rgba(0, 0, 0, 0.7)'
               }}>
             </div>
           </div>
@@ -56,8 +54,7 @@ const Slideshow = () => {
               'marginRight': 'auto',
               'marginTop': '5rem',
               'backgroundSize': 'cover',
-              'borderRadius': '10px',
-              'box-shadow': '0 0 9px rgba(0, 0, 0, 0.7)'
+              'boxShadow': '0 0 9px rgba(0, 0, 0, 0.7)'
             }}>
             </div>
           </div>
@@ -70,8 +67,7 @@ const Slideshow = () => {
                 'marginRight': 'auto',
                 'marginTop': '5rem',
                 'backgroundSize': 'cover',
-                'borderRadius': '10px',
-                'box-shadow': '0 0 9px rgba(0, 0, 0, 0.7)'
+                'boxShadow': '0 0 9px rgba(0, 0, 0, 0.7)'
                 }}>
             </div>
           </div>
