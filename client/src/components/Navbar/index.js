@@ -1,9 +1,9 @@
 // -=- Import section -=-
-import React from 'react';
+import React, { useState } from 'react';
+import GoogleSignIn from '../GoogleSignIn';
+import GoogleSignOut from '../GoogleSignOut';
+import Auth from '../../utils/auth';
 import navLogo from '../../images/logo2_yellow.svg';
-
-// importing auth here
-// import Auth from '../utils/Auth';
 
 // import Material UI styles
 import { makeStyles } from '@material-ui/core/styles';
@@ -44,16 +44,23 @@ export default function Navbar(props) {
     <div className={classes.root}>
       <AppBar position="static" className={classes.background}>
         <Toolbar>
+            { Auth.loggedIn() ? (
+              <>
             <div>
                 <Button color="inherit" href='/'><img alt='21io' className="logoImage" src={navLogo}></img></Button>
                 <Button color="inherit" href='/search'>Search for Movies</Button>
                 <Button color="inherit" href='/wishlist'>Wish List</Button>
                 <Button color="inherit">History</Button>
-            </div>
-            <div className={classes.loginLogoutDiv}>
+              <div className={classes.loginLogoutDiv}>
                 <Button color="inherit">Signup</Button>
                 <Button color="inherit">Login</Button>
+              </div>
             </div>
+            <GoogleSignOut/>
+            </>
+            ):(
+            <GoogleSignIn/> 
+            )}
         </Toolbar>
       </AppBar>
     </div>

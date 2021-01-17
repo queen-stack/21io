@@ -1,0 +1,2 @@
+export const UPDATE_WISHLIST = "UPDATE_WISHLIST";
+export const ADD_TO_HISTORY= "ADD_TO_CART";

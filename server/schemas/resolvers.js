@@ -23,28 +23,8 @@ const resolvers = {
 
   Mutation: {
     // OK
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
-      const token = signToken(user);
+    addUser: async (parent, args, context) => {
 
-      return { token, user };
-    },
-
-    // OK
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
-
-      if (!user) {
-        throw new AuthenticationError('Incorrect credentials');
-      }
-
-      const correctPw = await user.isCorrectPassword(password);
-
-      if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
-      }
-
-      const token = signToken(user);
       return { token, user };
     },
 
@@ -95,6 +75,20 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+
+
+  //   addPurchased: async (parent, { purchase }, context) => {
+      
+  //     if (context.user) {
+  //       const purchased = new Order({ purchase });
+
+  //       await User.findByIdAndUpdate(context.user._id, { $push: { purchaseHistory: purchased } });
+
+  //       return purchased;
+  //     }
+
+  //     throw new AuthenticationError('Not logged in');
+  //   },
 
   }
 };
