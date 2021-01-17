@@ -1,6 +1,5 @@
 // -=- Import section -=-
 import React, { useState } from 'react';
-import SearchInput from '../Search';
 import GoogleSignIn from '../GoogleSignIn';
 import GoogleSignOut from '../GoogleSignOut';
 import Auth from '../../utils/auth';
