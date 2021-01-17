@@ -15,20 +15,30 @@ module.exports = {
         .pop()
         .trim();
     }
+
     console.log('token', token);
+
     let decodedData; 
     if (!token) {
       return req;
     }
 
     try {
-      decodedData = jwt.decode(token);
-      req.userId = decodedData.sub;
-    } catch {
+      // if token was signed locally
+      if(token.length < 500) {
+      const { data } = jwt.verify(token, secret, { maxAge: expiration });
+      req.user = data;
+      } 
+      // google token
+      else {
+        decodedData = jwt.decode(token);
+        req.userId = decodedData.sub;
+      }
+      // decodedData = jwt.decode(token);
+      // req.userId = decodedData.sub;
+    } catch { 
       console.log('Invalid token');
     }
-    // return updated request object
-    console.log(decodedData);
     return req;
   },
 

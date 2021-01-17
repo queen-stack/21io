@@ -1,6 +1,6 @@
 import React from 'react';
 import { Slide } from 'react-slideshow-image';
-import 'react-slideshow-image/dist/styles.css'
+import 'react-slideshow-image/dist/styles.css';
 
 // import sliderBackground from '../../images/sliderBackground.jpeg';
 import pinocchio from '../../images/pinocchio.jpg'

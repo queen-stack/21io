@@ -23,7 +23,7 @@ const resolvers = {
   Mutation: {
     // OK
     addUser: async (parent, args, context) => {
-
+      
       return { token, user };
     },
 

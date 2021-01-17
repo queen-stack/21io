@@ -5,7 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
+  /* background-color: black; */
+  background-image: url('./images/sliderBackground.jpeg');
+
 }
 
 /* Navbar custom CSS */
@@ -30,9 +32,9 @@ body {
   color: #e5a631;
 }
 
-.search-page {
-  background-color: black;
-}
+/* .search-page {
+  background-color: black; */
+/* } */
 
 .input-container {
   text-align: center;
@@ -67,7 +69,8 @@ body {
     /*min-height: -webkit-fill-available;
     */
     background-size: cover;
-    background-image: url('./images/sliderBackground.jpeg');
+    background: transparent;
+    /* background-image: url('./images/sliderBackground.jpeg'); */
 }
 
 /*
@@ -84,9 +87,9 @@ body {
 
 /* CSS for each movie card and section */
 
-.movie-section {
+/* .movie-section {
   background-color: black;
-}
+} */
 
 .movie {
   margin: 1rem;
@@ -109,6 +112,7 @@ body {
   padding: none;
   margin: none;
 }
+
 .description {
   background-color: white;
 }
@@ -120,4 +124,30 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.form {
+  max-width: 330px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 20px;
+  margin-top: 30px;
+  color: #e5a631;
+  font-size: 1rem;
+  background-image: url('./images/sliderBackground.jpeg');
+}
+
+input {
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+a {
+  color: #a50300
+}
+
+h2 {
+  color: #e5a631;
 }
