@@ -1,13 +1,9 @@
 const { Schema, model } = require('mongoose');
-const movieSchema = require('./Movie');
+const Movie = require('./Movie');
 
 const purchaseSchema = new Schema(
     {
-        movie: {
-            type: Schema.Types.ObjectId,
-            ref: 'Movie',
-            required: true
-        },
+        moviePurchase: Movie.schema,
         purchaseDate: {
             type: Date,
             default: Date.now
