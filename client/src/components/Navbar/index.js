@@ -44,13 +44,14 @@ export default function Navbar(props) {
     <div className={classes.root}>
       <AppBar position="static" className={classes.background}>
         <Toolbar>
+
+            <Button color="inherit" href='/'><img alt='21io' className="logoImage" src={navLogo}></img></Button>
+                <Button color="inherit" href='/search'>Search for Movies</Button>
             { Auth.loggedIn() ? (
               <>
             <div>
-                <Button color="inherit" href='/'><img alt='21io' className="logoImage" src={navLogo}></img></Button>
-                <Button color="inherit" href='/search'>Search for Movies</Button>
                 <Button color="inherit" href='/wishlist'>Wish List</Button>
-                <Button color="inherit">History</Button>
+                <Button color="inherit" href='/puchase-history'>History</Button>
               <div className={classes.loginLogoutDiv}>
               </div>
             </div>
