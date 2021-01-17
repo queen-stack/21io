@@ -22,57 +22,57 @@ const Slideshow = () => {
           <div className="each-slide">
             <div className='sliderImage' style={{
               'backgroundImage': `url(${slideImages[0]})`,
-              'height': '40rem',
-              'width': '30rem',
+              'height': '30rem',
+              'width': '20rem',
               'marginLeft': 'auto',
               'marginRight': 'auto',
               'marginTop': '5rem',
               'backgroundSize': 'cover',
-              'borderRadius': '20px'
+              'borderRadius': '10px',
+              'box-shadow': '0 0 9px rgba(0, 0, 0, 0.7)'
               }}>
-              <span>Slide 1</span>
             </div>
           </div>
           <div className="each-slide">
             <div className='sliderImage' style={{
               'backgroundImage': `url(${slideImages[1]})`,
-              'height': '40rem',
-              'width': '30rem',
+              'height': '30rem',
+              'width': '20rem',
               'marginLeft': 'auto',
               'marginRight': 'auto',
               'marginTop': '5rem',
               'backgroundSize': 'cover',
-              'borderRadius': '20px'
+              'borderRadius': '10px',
+              'box-shadow': '0 0 9px rgba(0, 0, 0, 0.7)'
               }}>
-              <span>Slide 2</span>
             </div>
           </div>
           <div className="each-slide">
             <div className='sliderImage' style={{
               'backgroundImage': `url(${slideImages[2]})`,
-              'height': '40rem',
-              'width': '30rem',
+              'height': '30rem',
+              'width': '20rem',
               'marginLeft': 'auto',
               'marginRight': 'auto',
               'marginTop': '5rem',
               'backgroundSize': 'cover',
-              'borderRadius': '20px'
+              'borderRadius': '10px',
+              'box-shadow': '0 0 9px rgba(0, 0, 0, 0.7)'
             }}>
-              <span>Slide 3</span>
             </div>
           </div>
           <div className="each-slide">
             <div className='sliderImage' style={
               {'backgroundImage': `url(${slideImages[3]})`,
-                'height': '40rem',
-                'width': '30rem',
+                'height': '30rem',
+                'width': '20rem',
                 'marginLeft': 'auto',
                 'marginRight': 'auto',
                 'marginTop': '5rem',
                 'backgroundSize': 'cover',
-                'borderRadius': '20px'
+                'borderRadius': '10px',
+                'box-shadow': '0 0 9px rgba(0, 0, 0, 0.7)'
                 }}>
-              <span>Slide 3</span>
             </div>
           </div>
         </Slide>

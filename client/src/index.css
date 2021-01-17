@@ -27,7 +27,7 @@ body {
 
 .noTitles {
   text-align: center;
-  color: #e5a631;
+  color: white;
 }
 
 .search-page {
@@ -39,7 +39,7 @@ body {
 }
 
 .discoverTitle{
-  color: #e5a631;
+  color: white;
   font-size: 3rem;
 }
 /* Grid custom CSS */
@@ -59,7 +59,7 @@ body {
 
 /* Slider custom CSS */
 .slide-container {
-    height: 50rem;
+    height: 39rem;
     width: 100%;
     
     object-fit: cover;
