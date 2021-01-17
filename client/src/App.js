@@ -7,8 +7,7 @@ import './App.css';
 
 import Landing from './pages/Landing';
 import SearchMovie from './pages/SearchMovie'; 
-// import WishList from './pages/WishList';
-// <Route exact path='/wishlist' component={WishList}/>
+
 
 function App() {
   return (

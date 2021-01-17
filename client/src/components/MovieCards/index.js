@@ -23,7 +23,6 @@ const DiscoverMovieList = (props) => {
   // styling for the Material UI cards
   const classes = useStyles();
 
-  const noImage = 'https://image.tmdb.org/t/p/w1280/stockImage';
 
   // console.log the data to see which titles don't have images
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import SearchInput from '../SearchInput';
 import Grid from '@material-ui/core/Grid';
 import DiscoverMovieList from '../MovieCards';
+import stockImage from '../../images/stockPhoto.jpg';
 
 // This uses the Material UI cards -> https://material-ui.com/components/cards/#Media
 const SearchMovie = (props) => {
@@ -24,7 +25,27 @@ const SearchMovie = (props) => {
   const responseJson = await response.json();
   setMovies(responseJson.results)
 
-  console.log(responseJson)
+  const noImage = 'https://image.tmdb.org/t/p/w1280/' + stockImage;
+/*
+  console.log(
+    responseJson.results[0].poster_path
+    )
+    */
+
+   for(let i = 0; i < responseJson.results.length; i += 30) {
+    //var noImage = responseJson.results[i].backdrop_path
+
+    if(!responseJson.results[i].backdrop_path || responseJson.results[i].backdrop_path === null){
+      console.log('hit the first')
+      return noImage
+    }
+
+    if(!responseJson.results[i].poster_path || responseJson.results[i].poster_path === null){
+      console.log('hit this')
+      return noImage
+    }
+  }
+    
   }
 }
 
@@ -32,6 +53,7 @@ const SearchMovie = (props) => {
 useEffect (() => {
     apiSearch(searchValue)
 }, [searchValue]);
+
 
 if(!apiSearch(searchValue) || !searchValue) {
   return(
