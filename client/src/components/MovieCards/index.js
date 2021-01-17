@@ -10,10 +10,10 @@ import Typography from '@material-ui/core/Typography';
 // the useStyles is for the material UI styling, this is imported from "import { makeStyles } from '@material-ui/core/styles'"
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 300,
   },
   media: {
-    height: 140,
+    height: 80,
   },
 });
 
