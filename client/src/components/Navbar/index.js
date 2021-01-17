@@ -51,6 +51,10 @@ export default function Navbar(props) {
                 <Button color="inherit" href='/search'>Search for Movies</Button>
                 <Button color="inherit" href='/wishlist'>Wish List</Button>
                 <Button color="inherit">History</Button>
+              <div className={classes.loginLogoutDiv}>
+                <Button color="inherit">Signup</Button>
+                <Button color="inherit">Login</Button>
+              </div>
             </div>
             <GoogleSignOut/>
             </>
