@@ -6,13 +6,11 @@ import 'react-slideshow-image/dist/styles.css'
 import sliderImageOne from '../../images/sliderImageOne.jpg'
 import sliderImageTwo from '../../images/sliderImageTwo.jpg';
 import sliderImageThree from '../../images/sliderImageThree.jpg';
-import sliderImageFour from '../../images/sliderImageFour.jpg';
 
 const slideImages = [
   sliderImageOne,
   sliderImageTwo,
-  sliderImageThree,
-  sliderImageFour
+  sliderImageThree
 ];
 
 const Slideshow = () => {
@@ -23,7 +21,7 @@ const Slideshow = () => {
             <div className='sliderImage' style={{
               'backgroundImage': `url(${slideImages[0]})`,
               'height': '30rem',
-              'width': '60rem',
+              'width': '20rem',
               'marginLeft': 'auto',
               'marginRight': 'auto',
               'marginTop': '5rem',
@@ -36,7 +34,7 @@ const Slideshow = () => {
             <div className='sliderImage' style={{
               'backgroundImage': `url(${slideImages[1]})`,
               'height': '30rem',
-              'width': '60rem',
+              'width': '20rem',
               'marginLeft': 'auto',
               'marginRight': 'auto',
               'marginTop': '5rem',
@@ -49,26 +47,13 @@ const Slideshow = () => {
             <div className='sliderImage' style={{
               'backgroundImage': `url(${slideImages[2]})`,
               'height': '30rem',
-              'width': '60rem',
+              'width': '20rem',
               'marginLeft': 'auto',
               'marginRight': 'auto',
               'marginTop': '5rem',
               'backgroundSize': 'cover',
               'boxShadow': '0 0 9px rgba(0, 0, 0, 0.7)'
             }}>
-            </div>
-          </div>
-          <div className="each-slide">
-            <div className='sliderImage' style={
-              {'backgroundImage': `url(${slideImages[3]})`,
-                'height': '30rem',
-                'width': '60rem',
-                'marginLeft': 'auto',
-                'marginRight': 'auto',
-                'marginTop': '5rem',
-                'backgroundSize': 'cover',
-                'boxShadow': '0 0 9px rgba(0, 0, 0, 0.7)'
-                }}>
             </div>
           </div>
         </Slide>

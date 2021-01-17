@@ -18,11 +18,20 @@ body {
   padding: 10px;
 }
 
+.makeStyles-background-1 {
+  background: transparent;
+  position: absolute;
+}
+
 .searchInput {
   width: 20rem;
   margin: 2rem;
   padding: 10px;
   border-radius: 25px
+}
+
+.navbar-comp {
+  justify-content: space-evenly;
 }
 
 .noTitles {
@@ -36,6 +45,7 @@ body {
 
 .input-container {
   text-align: center;
+  padding-top: 8rem;
 }
 
 .discoverTitle{

@@ -18,15 +18,21 @@ import Button from '@material-ui/core/Button';
 // link color is a custom CSS color, in index.css under ".MuiToolbar-root"
 const useStyles = makeStyles((theme) => ({
   background: {
-    background: '#505b61',
-
+    background: 'transparent',
+    position: 'absolute',
+    boxShadow: 'none',
+    justifyContent: 'space-evenly'
   },
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    justifyContent: 'space-evenly'
+
   },
+  /*
   menuButton: {
     marginRight: theme.spacing(2)
   },
+  */
   title: {
     flexGrow: 1,
   }
@@ -43,8 +49,7 @@ export default function Navbar(props) {
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.background}>
-        <Toolbar>
-
+        <Toolbar className='navbar-comp'>
             <Button color="inherit" href='/'><img alt='21io' className="logoImage" src={navLogo}></img></Button>
                 <Button color="inherit" href='/search'>Search for Movies</Button>
             { Auth.loggedIn() ? (
