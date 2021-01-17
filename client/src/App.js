@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -33,8 +33,7 @@ function App() {
           <Route exact path='/' component={Landing} />
           <Route exact path='/search' component={SearchMovie} />
           <Route exact path='/wishlist' component={Wishlist} />
-          <Route exact path='/history' component={OrderHistory} />
-
+          <Route exact path='/purchase-history' component={OrderHistory} />
           <Route render={() => <h1 className='display-2'>Oh No! This is not a page, please redirect back</h1>} />
         </Switch>
       </>

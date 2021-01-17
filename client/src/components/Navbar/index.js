@@ -1,5 +1,5 @@
 // -=- Import section -=-
-import React, { useState } from 'react';
+import React from 'react';
 import GoogleSignIn from '../GoogleSignIn';
 import GoogleSignOut from '../GoogleSignOut';
 import Auth from '../../utils/auth';
@@ -52,14 +52,16 @@ export default function Navbar(props) {
                 <Button color="inherit" href='/wishlist'>Wish List</Button>
                 <Button color="inherit">History</Button>
               <div className={classes.loginLogoutDiv}>
-                <Button color="inherit">Signup</Button>
-                <Button color="inherit">Login</Button>
               </div>
             </div>
             <GoogleSignOut/>
             </>
             ):(
+            <>
+              <Button color="inherit">Signup</Button>
+              <Button color="inherit">Login</Button>
             <GoogleSignIn/> 
+            </>
             )}
         </Toolbar>
       </AppBar>
