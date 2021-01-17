@@ -22,82 +22,93 @@ const resolvers = {
 
   Mutation: {
     // OK
-    addUser: async (parent, args, context) => {
+    addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
 
       return { token, user };
     },
 
-    //ok
-    login: async (parent, args) => {
+    // OK
+    login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }
 
-      addMovie: async (parent, { input }, context) => {
-        if (context.user) {
-          const updatedUser = await User.findByIdAndUpdate(
-            { _id: context.user._id },
-            { $addToSet: { wishList: input } },
-            { new: true }
-          );
-          return updatedUser;
-        }
-        throw new AuthenticationError('You need to be logged in!');
-      }
+      const token = signToken(user);
+      return { token, user };
     },
 
-        // OK
-        removeMovie: async (parent, args, context) => {
-          if (context.user) {
-            const updatedUser = await User.findByIdAndUpdate(
-              { _id: context.user._id },
-              { $pull: { wishList: { movieId: args.movieId } } },
-              { new: true }
-            );
-            return updatedUser;
-          }
-          throw new AuthenticationError('You need to be logged in!')
-        },
+    addMovie: async (parent, { input }, context) => {
+      console.log("addMovie: " + JSON.stringify(input));
+      if (context.user) {
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { wishList: input } },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!')
+    },
 
-          purchaseMovie: async (parent, args, context) => {
-            if (context.user) {
+    // OK
+    removeMovie: async (parent, args, context) => {
+      if (context.user) {
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $pull: { wishList: { movieId: args.movieId } } },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!')
+    },
 
-              // look up the user based on the user ID in the call context
-              var updatedUser = await User.findById(
-                { _id: context.user._id }
-              );
+    purchaseMovie: async (parent, args, context) => {
+      if (context.user) {
 
-              let movieToPurchase = updatedUser.wishList.find(function (item) {
-                return item.movieId === args.movieId;
-              });
+        // look up the user based on the user ID in the call context
+        var updatedUser = await User.findById(
+          { _id: context.user._id }
+        );
 
-              // with the movie object found in the wishlist, remove movie from wishlist
-              updatedUser = await User.findByIdAndUpdate(
-                { _id: context.user._id },
-                { $pull: { wishList: { movieId: args.movieId } } },
-                { new: true }
-              );
+        // If no user found, throw an exception.  TBD
+        // find the movie in the user's wishlist based on the movieId passed in in args.
+        let movieToPurchase = updatedUser.wishList.find(function (item) {
+          return item.movieId === args.movieId;
+        });
 
-              const purchase = await Purchase.create(movieToPurchase);
+        // with the movie object found in the wishlist, remove that movie from the wishlist...
+        updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $pull: { wishList: { movieId: args.movieId } } },
+          { new: true }
+        );
 
-              // create the purchase and add purchase to the user's purchase history
-              updatedUser = await User.findByIdAndUpdate(
-                { _id: context.user._id },
-                { $push: { purchaseHistory: purchase } },
-                { new: true }
-              );
+        // const purchase = await Purchase.create({ moviePurchase: movieToPurchase });
+        const purchase = await Purchase.create({ moviePurchase: movieToPurchase });
 
-              //If no user found throw an exception - TBD
+        // create the purchase and add that purchase to the user's purchase history.
+        updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { purchaseHistory: purchase } },
+          { new: true }
+        );
 
-              return updatedUser;
-            }
-            throw new AuthenticationError('You need to be logged in!');
-          },
+        return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   }
-  };
+};
 
-  module.exports = resolvers;
+module.exports = resolvers;
