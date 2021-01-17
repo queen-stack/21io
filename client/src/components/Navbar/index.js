@@ -1,6 +1,9 @@
 // -=- Import section -=-
-import React, { useState } from 'react';
-import SearchInput from '../Search';
+import React from 'react';
+import GoogleSignIn from '../GoogleSignIn';
+import GoogleSignOut from '../GoogleSignOut';
+import Auth from '../../utils/auth';
+import navLogo from '../../images/logo2_yellow.svg';
 
 // import Material UI styles
 import { makeStyles } from '@material-ui/core/styles';
@@ -30,25 +33,37 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // -=- Navbar structure -=-
-export default function Navbar() {
-  const [search, setSearch] = useState('');
-
+export default function Navbar(props) {
 
   const classes = useStyles();
+
+  // this is for the logged in user
+  // const loggedIn = Auth.loggedIn();
 
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.background}>
         <Toolbar>
-            <SearchInput search={search} setSearch={setSearch}/>
+
+            <Button color="inherit" href='/'><img alt='21io' className="logoImage" src={navLogo}></img></Button>
+                <Button color="inherit" href='/search'>Search for Movies</Button>
+            { Auth.loggedIn() ? (
+              <>
             <div>
-                <Button color="inherit">Wish List</Button>
-                <Button color="inherit">History</Button>
+                <Button color="inherit" href='/wishlist'>Wish List</Button>
+                <Button color="inherit" href='/puchase-history'>History</Button>
+              <div className={classes.loginLogoutDiv}>
+              </div>
             </div>
-            <div className={classes.loginLogoutDiv}>
-                <Button color="inherit">Signup</Button>
-                <Button color="inherit">Login</Button>
-            </div>
+            <GoogleSignOut/>
+            </>
+            ):(
+            <>
+              <Button color="inherit">Signup</Button>
+              <Button color="inherit">Login</Button>
+            <GoogleSignIn/> 
+            </>
+            )}
         </Toolbar>
       </AppBar>
     </div>

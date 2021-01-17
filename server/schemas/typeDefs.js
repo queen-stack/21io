@@ -31,7 +31,7 @@ const typeDefs = gql`
 
     type Query {
         user: User     
-        purchase(_id: ID!): Purchase
+        purchase(email: String!): Purchase
     }
 
     type Auth {
@@ -40,12 +40,13 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        login(email: String!, password: String!): Auth
         addUser(email: String!, password: String!): Auth
         addMovie(input: movieInput): User
         removeMovie(movieId: Int!): User
         purchaseMovie(movieId: Int!): User
     }
 `;
+
+// addPurchased(purchase: Int!): User
 
 module.exports = typeDefs; 
