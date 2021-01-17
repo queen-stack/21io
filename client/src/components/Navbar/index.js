@@ -45,7 +45,6 @@ export default function Navbar(props) {
     <div className={classes.root}>
       <AppBar position="static" className={classes.background}>
         <Toolbar>
-            <SearchInput search={search} setSearch={setSearch}/>
             { Auth.loggedIn() ? (
               <>
             <div>
