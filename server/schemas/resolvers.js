@@ -1,8 +1,30 @@
 const { User, Movie, Purchase } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
+const { GraphQLScalarType, Kind } = require('graphql');
+
+const dateScalar = new GraphQLScalarType({
+  name: 'Date',
+  description: 'Date custom scalar type',
+  serialize(value) {
+    return value.getTime(); // Convert outgoing Date to integer for JSON
+  },
+  parseValue(value) {
+    return new Date(value); // Convert incoming integer to Date
+  },
+  parseLiteral(ast) {
+    if (ast.kind === Kind.INT) {
+      return parseInt(ast.value, 10); // Convert hard-coded AST string to type expected by parseValue
+    }
+    return null; // Invalid hard-coded value (not an integer)
+  },
+});
+
 
 const resolvers = {
+
+  Date: dateScalar,
+
   Query: {
     user: async (parent, args, context) => {
       if (context.user) {
@@ -48,7 +70,6 @@ const resolvers = {
     },
 
     addMovie: async (parent, { input }, context) => {
-      console.log("addMovie: " + JSON.stringify(input));
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
@@ -82,8 +103,10 @@ const resolvers = {
         );
 
         // If no user found, throw an exception.  TBD
+
         // find the movie in the user's wishlist based on the movieId passed in in args.
         let movieToPurchase = updatedUser.wishList.find(function (item) {
+          console.log("item.movieId: " + item.movieId + "  args.movieId: " + args.movieId);
           return item.movieId === args.movieId;
         });
 
@@ -97,7 +120,7 @@ const resolvers = {
         // const purchase = await Purchase.create({ moviePurchase: movieToPurchase });
         const purchase = await Purchase.create({ moviePurchase: movieToPurchase });
 
-        // create the purchase and add that purchase to the user's purchase history.
+        // create the purchase and add that purchase to the user's puchase history.
         updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { purchaseHistory: purchase } },
@@ -108,6 +131,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+
   }
 };
 
