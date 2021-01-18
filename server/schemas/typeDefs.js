@@ -1,6 +1,7 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+    scalar Date
 
     type Movie {
         movieId: Int
@@ -14,7 +15,6 @@ const typeDefs = gql`
         email: String
         wishListCount: Int
         wishList: [Movie]
-        purchaseHistoryCount: Int
         purchaseHistory: [Purchase]
     }
   
@@ -27,7 +27,7 @@ const typeDefs = gql`
 
     type Purchase {
         moviePurchase: Movie
-        purchaseDate: String
+        purchaseDate: Date
     }
 
     type Query {
