@@ -8,7 +8,7 @@ function GoogleSignIn() {
     
     console.log(googleUser);
     const idToken = googleUser.getAuthResponse().id_token;
-    Auth.oauthLogin(idToken);
+    Auth.login(idToken);
     
     };
     const onFailure = (res) => {

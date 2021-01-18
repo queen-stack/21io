@@ -8,8 +8,12 @@ class AuthService {
   loggedIn() {
     // Checks if there is a saved token and it's still valid
     let token = this.getToken();
+
     if (!token) {
       token = localStorage.getItem('id_token');
+      // if (!token) {
+      //   token = localStorage.getItem('oathToken');
+      // }
     }
     return !!token && !this.isTokenExpired(token);
   }
