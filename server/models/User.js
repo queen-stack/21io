@@ -18,7 +18,7 @@ const userSchema = new Schema(
       required: true,
     },
     // set wishList to be an array of data that adheres to the movieSchema
-    wishList: [movieSchema],
+    wishList: [Movie.schema],
     purchaseHistory: [Purchase.schema],
   },
   // set this to use virtual below
@@ -44,10 +44,16 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-// when we query a user, we'll also get another field called `movieCount` with the number of wishList movies we have
-userSchema.virtual('movieCount').get(function () {
+// when we query a user, we'll see a field called `Wish List Count` with the number of wishList movies we have
+userSchema.virtual('wishListCount').get(function () {
   return this.wishList.length;
 });
+
+// when we query a user, we'll see a field called `Purchase History Count` with the number of movies we have Purchased
+userSchema.virtual('purchaseHistoryCount').get(function () {
+  return this.purchaseHistory.length;
+});
+
 
 const User = model('User', userSchema);
 
