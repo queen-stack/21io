@@ -12,6 +12,7 @@ export const QUERY_USER = gql`
                 name
                 image
             }
+            purchaseHistoryCount
             purchaseHistory {
                 moviePurchase {
                     movieId
