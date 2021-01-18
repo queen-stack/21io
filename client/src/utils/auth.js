@@ -7,7 +7,14 @@ class AuthService {
 
   loggedIn() {
     // Checks if there is a saved token and it's still valid
-    const token = localStorage.getItem('id_token');
+    let token = this.getToken();
+
+    if (!token) {
+      token = localStorage.getItem('id_token');
+      // if (!token) {
+      //   token = localStorage.getItem('oathToken');
+      // }
+    }
     return !!token && !this.isTokenExpired(token);
   }
 
@@ -30,6 +37,12 @@ class AuthService {
   login(idToken) {
     // Saves user token to localStorage
     localStorage.setItem('id_token', idToken);
+    window.location.assign('/');
+  }
+
+  oauthLogin(idToken) {
+    // Saves user token to localStorage
+    localStorage.setItem('oauthToken', idToken);
     window.location.assign('/');
   }
 

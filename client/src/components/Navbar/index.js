@@ -1,7 +1,5 @@
 // -=- Import section -=-
 import React from 'react';
-import GoogleSignIn from '../GoogleSignIn';
-import GoogleSignOut from '../GoogleSignOut';
 import Auth from '../../utils/auth';
 import navLogo from '../../images/logo2_yellow.svg';
 
@@ -18,10 +16,8 @@ import Button from '@material-ui/core/Button';
 // link color is a custom CSS color, in index.css under ".MuiToolbar-root"
 const useStyles = makeStyles((theme) => ({
   background: {
-    background: 'transparent',
-    position: 'absolute',
-    boxShadow: 'none',
-    justifyContent: 'space-evenly'
+    background: 'linear-gradient(to right, #181a1e ,#3c4246 );',
+
   },
   root: {
     flexGrow: 1,
@@ -51,22 +47,21 @@ export default function Navbar(props) {
       <AppBar position="static" className={classes.background}>
         <Toolbar className='navbar-comp'>
             <Button color="inherit" href='/'><img alt='21io' className="logoImage" src={navLogo}></img></Button>
-                <Button color="inherit" href='/search'>Search for Movies</Button>
+            <Button color="inherit" href='/search'>Search for Movies</Button>
             { Auth.loggedIn() ? (
               <>
             <div>
                 <Button color="inherit" href='/wishlist'>Wish List</Button>
-                <Button color="inherit" href='/puchase-history'>History</Button>
-              <div className={classes.loginLogoutDiv}>
-              </div>
+                <Button color="inherit" href='/purchase-history'>History</Button>
             </div>
-            <GoogleSignOut/>
+
+            <Button color="inherit" href="/" onClick={()=> Auth.logout()}>Logout</Button>
             </>
             ):(
             <>
-              <Button color="inherit">Signup</Button>
-              <Button color="inherit">Login</Button>
-            <GoogleSignIn/> 
+          
+              <Button color="inherit" href="/signup">Signup</Button>
+              <Button color="inherit" href="/login">Login</Button>
             </>
             )}
         </Toolbar>

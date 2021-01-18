@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import Navbar from '../components/Navbar';
 
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_USER } from "../utils/queries";
@@ -14,6 +14,7 @@ function Wishlist() {
 
   return (
     <>
+    <Navbar/>
       <div className="container my-1">
         {user ? (
           <>
@@ -50,4 +51,4 @@ function Wishlist() {
 
 };
 
-export default Wishlist;
+export default Wishlist; 
