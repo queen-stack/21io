@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 // import schema from Movie.js
-const movieSchema = require('./Movie');
+const Movie = require('./Movie');
 const Purchase = require('./Purchase');
 
 const userSchema = new Schema(

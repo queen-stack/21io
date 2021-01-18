@@ -20,11 +20,15 @@ const useStyles = makeStyles((theme) => ({
 
   },
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    justifyContent: 'space-evenly'
+
   },
+  /*
   menuButton: {
     marginRight: theme.spacing(2)
   },
+  */
   title: {
     flexGrow: 1,
   }
@@ -41,8 +45,7 @@ export default function Navbar(props) {
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.background}>
-        <Toolbar>
-
+        <Toolbar className='navbar-comp'>
             <Button color="inherit" href='/'><img alt='21io' className="logoImage" src={navLogo}></img></Button>
             <Button color="inherit" href='/search'>Search for Movies</Button>
             { Auth.loggedIn() ? (

@@ -20,6 +20,11 @@ body {
   padding: 10px;
 }
 
+.makeStyles-background-1 {
+  background: transparent;
+  position: absolute;
+}
+
 .searchInput {
   width: 20rem;
   margin: 2rem;
@@ -27,9 +32,13 @@ body {
   border-radius: 25px
 }
 
+.navbar-comp {
+  justify-content: space-evenly;
+}
+
 .noTitles {
   text-align: center;
-  color: #e5a631;
+  color: white;
 }
 
 /* .search-page {
@@ -38,10 +47,11 @@ body {
 
 .input-container {
   text-align: center;
+  padding-top: 8rem;
 }
 
 .discoverTitle{
-  color: #e5a631;
+  color: white;
   font-size: 3rem;
 }
 /* Grid custom CSS */
@@ -51,7 +61,12 @@ body {
 
 #movieCard {
   margin: 2rem;
-  width: -webkit-fill-available;
+  /* width: -webkit-fill-available; */
+  height: fit-content;
+}
+
+.MuiCardActionArea-root {
+  text-align: none;
 }
 
 #card-img {
@@ -61,7 +76,7 @@ body {
 
 /* Slider custom CSS */
 .slide-container {
-    height: 50rem;
+    height: 38rem;
     width: 100%;
     
     object-fit: cover;
