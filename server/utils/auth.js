@@ -40,6 +40,7 @@ module.exports = {
       console.log('Invalid token');
     }
     // console.log(decodedData);
+    console.log(req);
     return req;
   },
 

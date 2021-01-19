@@ -13,16 +13,17 @@ const typeDefs = gql`
     type User {
         _id: ID
         email: String
-        wishListCount: Int
-        wishList: [Movie]
+        wishlistCount: Int
+        wishlist: [Movie]
+        purchaseHistoryCount: Int
         purchaseHistory: [Purchase]
     }
   
     input movieInput {
-        movieId: Int
-        name: String
-        description: String
-        image: String
+        id: Int
+        title: String
+        overview: String
+        poster_path: String
     }
 
     type Purchase {

@@ -73,9 +73,14 @@ const resolvers = {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { wishList: input } },
+          { $addToSet: { 
+            wishlist: {
+              input
+            } 
+          }},
           { new: true }
         );
+        console.log('movie added!')
         return updatedUser;
       }
       throw new AuthenticationError('You need to be logged in!')
@@ -86,9 +91,10 @@ const resolvers = {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $pull: { wishList: { movieId: args.movieId } } },
+          { $pull: { wishlist: { movieId: args.movieId } } },
           { new: true }
         );
+        console.log(updatedUser)
         return updatedUser;
       }
       throw new AuthenticationError('You need to be logged in!')
@@ -105,7 +111,7 @@ const resolvers = {
         // If no user found, throw an exception.  TBD
 
         // find the movie in the user's wishlist based on the movieId passed in in args.
-        let movieToPurchase = updatedUser.wishList.find(function (item) {
+        let movieToPurchase = updatedUser.wishlist.find(function (item) {
           console.log("item.movieId: " + item.movieId + "  args.movieId: " + args.movieId);
           return item.movieId === args.movieId;
         });

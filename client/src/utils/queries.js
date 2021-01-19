@@ -5,8 +5,8 @@ export const QUERY_USER = gql`
         user {
             _id
             email
-            wishListCount
-            wishList {
+            wishlistCount
+            wishlist {
                 movieId
                 description
                 name

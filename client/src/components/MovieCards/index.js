@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+import { saveMovieIds, getSavedMovieIds } from '../../utils/localStorage';
+
+
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -12,6 +16,10 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShopIcon from "@material-ui/icons/Shop";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Typography from '@material-ui/core/Typography';
+
+import Auth from '../../utils/auth';
+import {ADD_MOVIE} from '../../utils/mutations';
+
 
 // the useStyles is for the material UI styling, this is imported from "import { makeStyles } from '@material-ui/core/styles'"
 const useStyles = makeStyles((theme) => ({
@@ -51,16 +59,47 @@ const DiscoverMovieList = (props) => {
   // styling for the Material UI cards
   const classes = useStyles();
   const movies = props.movies;
+  console.log(movies);
+  const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
 
-  const [expanded, setExpanded] = React.useState(false);
+  const [addMovie, { error }] = useMutation(ADD_MOVIE);
+
+  useEffect(() => {
+    return () => saveMovieIds(savedMovieIds);
+  });
+
+
+  const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
   
-  const handleAddClick =  (movieId) => {
-    const movieToAdd = movies.find((movie) => movie.id === movieId);
+  const handleAddClick =  async (movieId) => {
+    
+    const foundMovie = movies.find((movie) => movie.id === movieId);
+    // const {_typename, ...foundMovie} = movieToAdd;
+    const movieToAdd = (({ id, title, overview, poster_path }) => ({ id, title, overview, poster_path }))(foundMovie);
     console.log(movieToAdd);
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    if (!token) {
+      return false;
+    }
+
+    try {
+      await addMovie({
+          variables: {input: movieToAdd}});
+
+      if (error) {
+        throw new Error('something went wrong!');
+      }
+
+      // if book successfully saves to user's account, save book id to state
+      setSavedMovieIds([...savedMovieIds, movieToAdd.movieId]);
+
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   // console.log the data to see which titles don't have images
