@@ -36,12 +36,12 @@ const SearchMovie = (props) => {
     //var noImage = responseJson.results[i].backdrop_path
 
     if(!responseJson.results[i].backdrop_path || responseJson.results[i].backdrop_path === null){
-      console.log('hit the first')
+      //console.log('hit the first')
       return noImage
     }
 
     if(!responseJson.results[i].poster_path || responseJson.results[i].poster_path === null){
-      console.log('hit this')
+      //console.log('hit this')
       return noImage
     }
   }

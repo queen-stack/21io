@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { saveMovieIds, getSavedMovieIds } from '../../utils/localStorage';
-
 
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -19,7 +17,7 @@ import Typography from '@material-ui/core/Typography';
 
 import Auth from '../../utils/auth';
 import {ADD_MOVIE} from '../../utils/mutations';
-import { QUERY_CHECKOUT, QUERY_USER } from '../../utils/queries';
+import { QUERY_CHECKOUT } from '../../utils/queries';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/react-hooks';
 
