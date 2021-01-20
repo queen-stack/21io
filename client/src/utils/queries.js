@@ -25,3 +25,11 @@ export const QUERY_USER = gql`
         }
     }
 `;
+
+export const QUERY_CHECKOUT = gql`
+  query getCheckout($input: movieInput!) {
+    checkout(input: $input) {
+      session
+    }
+  }
+`;
