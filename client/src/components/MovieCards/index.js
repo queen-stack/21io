@@ -34,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
   },
   Card: {
     width: 300,
-    margin: 'auto'
+    margin: 'auto',
+    color: 'white'
   },
   Media: {
     
@@ -146,7 +147,7 @@ const MovieCards = (props) => {
           <Typography gutterBottom variant="h5" component="h2">
               {movie.title}
           </Typography>
-          <Typography variant="body2" component="p">
+          <Typography variant="body2" component="p" id='overview'>
               {movie.overview}
           </Typography>
         </CardContent>
