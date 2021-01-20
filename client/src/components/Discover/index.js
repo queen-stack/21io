@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 // importing Material UI styling
 import Grid from '@material-ui/core/Grid';
 
-import DiscoverMovieList from '../MovieCards';
+import MovieCards from '../MovieCards';
 
 const DiscoverMovies = () => {
    const [ movies, setMovies ] = useState([]);
@@ -37,7 +37,7 @@ const DiscoverMovies = () => {
         <Grid container spacing={0}>
         <h2 className='discoverTitle'>Discover New Movie Titles</h2>
           <Grid container item xs={12} spacing={0}>
-            <DiscoverMovieList movies={movies}/>
+            <MovieCards movies={movies}/>
           </Grid>
         </Grid>
       </section>

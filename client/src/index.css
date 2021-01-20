@@ -61,6 +61,7 @@ body {
 
 #movieCard {
   margin: 2rem;
+  width: 18%;
   /* width: -webkit-fill-available; */
   height: fit-content;
 }
@@ -71,9 +72,8 @@ body {
 
 #card-img {
   width: auto;
-  height: 30rem;
+  height: 20rem;
 }
-
 /* Slider custom CSS */
 .slide-container {
     height: 38rem;
@@ -129,11 +129,11 @@ body {
 }
 
 .description {
-  background-color: white;
+  color: white;
 }
 
 .card-info-container {
-  background-color: #e5a631;
+  color: white;
 }
 
 code {

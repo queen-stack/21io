@@ -18,7 +18,7 @@ const userSchema = new Schema(
       required: true,
     },
     // set wishList to be an array of data that adheres to the movieSchema
-    wishList: [Movie.schema],
+    wishlist: [Movie.schema],
     purchaseHistory: [Purchase.schema],
   },
   // set this to use virtual below

@@ -28,18 +28,20 @@ module.exports = {
       // if(token.length < 500) {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
+      // console.log(data)
       // } 
       // google token
       // else {
       //   decodedData = jwt.decode(token);
-      //   req.userId = decodedData.sub;
+      //   req.userId = decodedData.sub; s
       // }
       // decodedData = jwt.decode(token);
       // req.userId = decodedData.sub;
     } catch { 
       console.log('Invalid token');
     }
-    // console.log(decodedData);
+
+    console.log(req.user);
     return req;
   },
 
