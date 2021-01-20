@@ -7,7 +7,7 @@ const typeDefs = gql`
         movieId: Int
         description: String
         name: String
-        image: String
+        poster_path: String
     }
 
     type User {

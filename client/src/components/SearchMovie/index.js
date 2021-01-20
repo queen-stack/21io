@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import SearchInput from '../SearchInput';
 import Grid from '@material-ui/core/Grid';
-import DiscoverMovieList from '../MovieCards';
+import MovieCards from '../MovieCards';
 import stockImage from '../../images/stockPhoto.jpg';
 
 // This uses the Material UI cards -> https://material-ui.com/components/cards/#Media
@@ -86,7 +86,7 @@ if(!apiSearch(searchValue) || !searchValue) {
         </div>
       <Grid container spacing={0}>
         <Grid container item xs={12} spacing={0}>
-        <DiscoverMovieList movies={movies} setSearchedTitles={setSearchedTitles}/>
+        <MovieCards movies={movies} setSearchedTitles={setSearchedTitles}/>
         </Grid>
     </Grid>
     </div>

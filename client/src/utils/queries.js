@@ -10,7 +10,7 @@ export const QUERY_USER = gql`
                 movieId
                 description
                 name
-                image
+                poster_path
             }
             purchaseHistoryCount
             purchaseHistory {
@@ -18,7 +18,7 @@ export const QUERY_USER = gql`
                     movieId
                     description
                     name
-                    image
+                    poster_path
                 }
                 purchaseDate
             }

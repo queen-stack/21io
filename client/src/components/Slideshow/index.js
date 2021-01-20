@@ -12,11 +12,14 @@ const slideImages = [
   sliderImageTwo,
   sliderImageThree
 ];
-
+const properties = {
+  indicators: true,
+  arrows: false
+}
 const Slideshow = () => {
     return (
       <div className="slide-container">
-        <Slide>
+        <Slide {...properties}>
           <div className="each-slide">
             <div className='sliderImage' style={{
               'backgroundImage': `url(${slideImages[0]})`,
@@ -24,9 +27,9 @@ const Slideshow = () => {
               'width': '20rem',
               'marginLeft': 'auto',
               'marginRight': 'auto',
-              'marginTop': '5rem',
+              'marginTop': '3rem',
               'backgroundSize': 'cover',
-              'boxShadow': '0 0 9px rgba(0, 0, 0, 0.7)'
+              'boxShadow': '0 0 50px rgba(0, 0, 0, 0.7)'
               }}>
             </div>
           </div>
@@ -37,9 +40,9 @@ const Slideshow = () => {
               'width': '20rem',
               'marginLeft': 'auto',
               'marginRight': 'auto',
-              'marginTop': '5rem',
+              'marginTop': '3rem',
               'backgroundSize': 'cover',
-              'boxShadow': '0 0 9px rgba(0, 0, 0, 0.7)'
+              'boxShadow': '0 0 50px rgba(0, 0, 0, 0.7)'
               }}>
             </div>
           </div>
@@ -50,9 +53,9 @@ const Slideshow = () => {
               'width': '20rem',
               'marginLeft': 'auto',
               'marginRight': 'auto',
-              'marginTop': '5rem',
+              'marginTop': '3rem',
               'backgroundSize': 'cover',
-              'boxShadow': '0 0 9px rgba(0, 0, 0, 0.7)'
+              'boxShadow': '0 0 50px rgba(0, 0, 0, 0.7)'
             }}>
             </div>
           </div>

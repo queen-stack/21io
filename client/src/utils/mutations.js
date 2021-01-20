@@ -32,7 +32,7 @@ export const ADD_MOVIE = gql`
         movieId
         description
         name
-        image
+        poster_path
       }
       purchaseHistoryCount
       purchaseHistory {
@@ -40,7 +40,7 @@ export const ADD_MOVIE = gql`
           movieId
           description
           name
-          image
+          poster_path
         }
         purchaseDate
       }

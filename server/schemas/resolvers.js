@@ -28,17 +28,14 @@ const resolvers = {
   Query: {
     user: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id })
+        const userData = await User.findOne({_id: context.user._id})
           .select('-__v -password')
+          .populate('wishlist')
+          .populate('purchaseHistory');
+    
         return userData;
       }
       throw new AuthenticationError('Not logged in');
-    },
-
-    // get a user by email
-    user: async (parent, { email }) => {
-      return User.findOne({ email })
-        .select('-__v -password')
     },
   },
 
@@ -71,11 +68,14 @@ const resolvers = {
 
     addMovie: async (parent, { input }, context) => {
       if (context.user) {
-        const updatedUser = await User.findByIdAndUpdate(
+        const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { 
             wishlist: {
-              input
+              movieId: input.id,
+              name: input.title,
+              description: input.overview,
+              poster_path: input.poster_path
             } 
           }},
           { new: true }

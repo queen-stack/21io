@@ -25,10 +25,10 @@ import {ADD_MOVIE} from '../../utils/mutations';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 500,
-    textAlign: 'none'
+    textAlign: 'none',
+    backgroundColor: '#3c4246'
   },
   media: {
-  
     height: 200,
     width: '100%',
   },
@@ -37,8 +37,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto'
   },
   Media: {
-    // height: 300,
-    // width: '100%',
+    
     objectFit: 'cover'
   },
   expand: {
@@ -51,11 +50,14 @@ const useStyles = makeStyles((theme) => ({
   expandOpen: {
     transform: "rotate(180deg)"
   },
+  customHoverFocus: {
+    "&:hover, &.Mui-focusVisible": { backgroundColor: "red" }
+  }
 }));
 
 // DiscoverMovieList() imports all the titles to the landing page
 // This uses the Material UI cards -> https://material-ui.com/components/cards/#Media
-const DiscoverMovieList = (props) => {
+const MovieCards = (props) => {
   // styling for the Material UI cards
   const classes = useStyles();
   const movies = props.movies;
@@ -117,12 +119,12 @@ const DiscoverMovieList = (props) => {
           id='card-img'
         />
         <CardActions disableSpacing>
-          <IconButton 
-          aria-label="add to wishlist"
+          <IconButton className={classes.customHoverFocus}
+          aria-label="add to wishlist" 
           onClick={() => handleAddClick(movie.id)} >
             <FavoriteIcon />
           </IconButton>
-          <IconButton 
+          <IconButton className={classes.customHoverFocus}
           aria-label="share"
            >
             <ShopIcon />
@@ -143,10 +145,10 @@ const DiscoverMovieList = (props) => {
           <Typography gutterBottom variant="h5" component="h2">
               {movie.title}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" component="p">
               {movie.overview}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2"  component="p">
             Avg. Rating {movie.vote_average}
           </Typography>
         </CardContent>
@@ -161,4 +163,4 @@ const DiscoverMovieList = (props) => {
   );
 }
 
-export default DiscoverMovieList
+export default MovieCards

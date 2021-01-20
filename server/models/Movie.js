@@ -14,7 +14,7 @@ const movieSchema = new Schema(
       type: String,
       required: true,
     },
-    image: {
+    poster_path: {
       type: String,
     },
   }
