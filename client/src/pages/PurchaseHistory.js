@@ -11,6 +11,7 @@ function PurchaseHistory() {
 
   if (data) {
     user = data.user;
+    console.log(user)
   }
 
   return (

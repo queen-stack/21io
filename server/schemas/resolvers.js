@@ -154,7 +154,8 @@ const resolvers = {
         // const purchase = await Purchase.create({ moviePurchase: movieToPurchase });
         const purchase = await Purchase.create({ moviePurchase: movieToPurchase });
 
-        // create the purchase and add that purchase to the user's puchase history.
+        console.log("purchase" , updatedUser)
+        // create the purchase and add that purchase to the user's purchase history.
         updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { purchaseHistory: purchase } },
