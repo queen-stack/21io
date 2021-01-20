@@ -17,6 +17,7 @@ const movieSchema = new Schema(
     poster_path: {
       type: String,
     },
+    _id: false
   }
 );
 
