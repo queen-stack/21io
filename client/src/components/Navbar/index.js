@@ -50,10 +50,10 @@ export default function Navbar(props) {
             <Button color="inherit" href='/search'>Search for Movies</Button>
             { Auth.loggedIn() ? (
               <>
-            <div>
+            
                 <Button color="inherit" href='/wishlist'>Wish List</Button>
                 <Button color="inherit" href='/purchase-history'>History</Button>
-            </div>
+            
 
             <Button color="inherit" href="/" onClick={()=> Auth.logout()}>Logout</Button>
             </>
