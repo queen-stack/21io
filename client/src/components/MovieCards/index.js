@@ -105,11 +105,13 @@ const MovieCards = (props) => {
 
   // console.log the data to see which titles don't have images
 
+  // -=- Return notes -=-
+  // CardActions needs to have the key, if this does not have that it will throw a warning
   return (
     <>
     {props.movies.map((movie, index) => (
     <Card className={classes.root} key={movie.id} id='movieCard'>
-      <CardActionArea>
+      <CardActionArea key={movie.id}>
         <CardMedia
           className={classes.media}
           image={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
@@ -149,7 +151,6 @@ const MovieCards = (props) => {
           </Typography>
         </CardContent>
         </Collapse>
-
       </CardActionArea>
     </Card>
     
