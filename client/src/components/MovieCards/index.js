@@ -14,6 +14,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShopIcon from "@material-ui/icons/Shop";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import Auth from '../../utils/auth';
 import {ADD_MOVIE} from '../../utils/mutations';
@@ -59,6 +60,10 @@ const useStyles = makeStyles((theme) => ({
     "&:hover, &.Mui-focusVisible": { backgroundColor: "red" }
   }
 }));
+
+
+const inWishlist = window.location.pathname === "/wishlist"; 
+console.log(inWishlist);
 
 // DiscoverMovieList() imports all the titles to the landing page
 // This uses the Material UI cards -> https://material-ui.com/components/cards/#Media
@@ -157,27 +162,37 @@ const MovieCards = (props) => {
           id='card-img'
         />
         <CardActions disableSpacing>
-          <IconButton className={classes.customHoverFocus}
-          aria-label="add to wishlist" 
-          onClick={() => handleAddClick(movie.movieId || movie.id)} >
-            <FavoriteIcon />
+          {!inWishlist &&
+          <Tooltip title="Add to Wishlist">
+            <IconButton className={classes.customHoverFocus}
+            aria-label="add to wishlist" 
+            onClick={() => handleAddClick(movie.movieId || movie.id)} >
+              <FavoriteIcon />
+            </IconButton>
+          </Tooltip>
+          }
+          <Tooltip title="Purchase Movie">
+            <IconButton className={classes.customHoverFocus}
+            aria-label="purchase"
+            onClick={() => handlePurchaseClick(movie.movieId || movie.id)}
+            >
+              <ShopIcon />
           </IconButton>
-          <IconButton className={classes.customHoverFocus}
-          aria-label="purchase"
-          onClick={() => handlePurchaseClick(movie.movieId || movie.id)}
-           >
-            <ShopIcon />
-          </IconButton>
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
+          </Tooltip>
+
+          <Tooltip title="See Movie Description">
+            <IconButton
+              className={clsx(classes.expand, {
+                [classes.expandOpen]: expanded
+              })}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+            >
+              <ExpandMoreIcon />
+            </IconButton>
+          </Tooltip>
+
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
