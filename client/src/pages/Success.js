@@ -1,17 +1,8 @@
 import React from "react";
-
-import { useQuery } from '@apollo/react-hooks';
-import { QUERY_USER } from "../utils/queries";
 // import Auth from '../utils/auth';
 
 function Success() {
-  const { data } = useQuery(QUERY_USER);
-  let user;
-
-  if (data) {
-    user = data.user;
-  }
-
+ 
   setTimeout(function() {window.location = "/";}, 3000);
 
   return(
