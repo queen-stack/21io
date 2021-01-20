@@ -45,5 +45,29 @@ export const ADD_MOVIE = gql`
         purchaseDate
       }
     }
+    purchaseMovie(movieId: $movieId) {
+      _id
+         email
+         wishlistCount
+         wishlist{
+            movieId
+         overview
+         title
+         poster_path
+         }
+         purchaseHistoryCount
+         purchaseHistory {
+           moviePurchase {
+             movieId
+         overview
+         title
+         poster_path
+           }
+         purchaseDate
+         }
+ 
+     
+   }
   }
+
 `;
