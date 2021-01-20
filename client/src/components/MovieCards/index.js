@@ -19,6 +19,12 @@ import Typography from '@material-ui/core/Typography';
 
 import Auth from '../../utils/auth';
 import {ADD_MOVIE} from '../../utils/mutations';
+import { QUERY_CHECKOUT } from '../../utils/queries';
+import { loadStripe } from '@stripe/stripe-js';
+import { useLazyQuery } from '@apollo/react-hooks';
+
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
 
 
 // the useStyles is for the material UI styling, this is imported from "import { makeStyles } from '@material-ui/core/styles'"
@@ -64,11 +70,21 @@ const MovieCards = (props) => {
   const movies = props.movies;
   const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
 
+  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+
   const [addMovie, { error }] = useMutation(ADD_MOVIE);
 
   useEffect(() => {
     return () => saveMovieIds(savedMovieIds);
   });
+
+  useEffect(() => {
+    if (data) {
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
+    }
+  }, [data]);
 
 
   const [expanded, setExpanded] = useState(false);
@@ -104,6 +120,21 @@ const MovieCards = (props) => {
     }
   };
 
+  const handlePurchaseClick = async (movieId) => {
+    const foundMovie = movies.find((movie) => movie.id === movieId);
+    // const {_typename, ...foundMovie} = movieToAdd;
+    const movieToPurchase = (({ id, title, overview, poster_path }) => ({ id, title, overview, poster_path }))(foundMovie);
+    console.log(movieToPurchase);
+    try {
+      await getCheckout({
+        variables: {input: movieToPurchase}
+      });
+
+    } catch (error) {
+      throw new Error('something went wrong!');    
+    }
+  };
+
   // console.log the data to see which titles don't have images
 
   // -=- Return notes -=-
@@ -127,7 +158,8 @@ const MovieCards = (props) => {
             <FavoriteIcon />
           </IconButton>
           <IconButton className={classes.customHoverFocus}
-          aria-label="share"
+          aria-label="purchase"
+          onClick={() => handlePurchaseClick(movie.id)}
            >
             <ShopIcon />
           </IconButton>

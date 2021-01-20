@@ -12,6 +12,7 @@
     <img src="https://img.shields.io/badge/node-blue" />
     <img src="https://img.shields.io/badge/graphQL-green" />
     <img src="https://img.shields.io/badge/apollo-white" />
+    <img src="https://img.shields.io/badge/material-UI-grey" />
 </p>
    
 ## Description
@@ -22,7 +23,7 @@
   
 💻 Below is a screenshot of the application:
   
-![movie_search_app](____________)
+![movie_search_app](client/src/images/app_screenshot.png)
 
 ## User Story
 
@@ -47,13 +48,11 @@ THEN I am presented with several search results, each featuring a movie's title,
 WHEN I click on the "Save" button on a movie
 THEN that movie’s information is saved to my wish list 
 WHEN I click on the "Wish List" Navbar option
-THEN I am presented with all of the movies I have saved to my wish list, each featuring the movie's title, description, image, and a link to that movies trailer on the Movies site and a "Remove" button and "Purchase" button
+THEN I am presented with all of the movies I have saved to my wish list, each featuring the movie's title, description, image and "Purchase" button
 WHEN I click on the "Purchase" button for a movie
-THEN I am taken to the payment screen to pay online
+THEN I am taken to the payment screen to pay online through Stripe
 WHEN I complete the payment 
 THEN that movie is deleted from my movie wish list and added to my history
-WHEN I click on the "Remove" button for a movie
-THEN that movie is deleted from my saved wish list
 WHEN I click on the "History" navbar option
 THEN I am presented with all the movies I have Purchased : Movie name, MovieId, Description, Date
 WHEN I click on the Logout button
