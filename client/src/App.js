@@ -10,6 +10,7 @@ import PurchaseHistory from './pages/PurchaseHistory';
 import './App.css';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Success from './pages/Success';
 // import SearchInput from './components/SearchInput';
 
 const client = new ApolloClient({
@@ -38,6 +39,7 @@ function App() {
           <Route exact path='/login' component={Login} />
           <Route exact path='/wishlist' component={Wishlist} />
           <Route exact path='/purchase-history' component={PurchaseHistory} />
+          <Route exact path="/success" component={Success} />
           <Route render={() => <h1 className='display-2'>Oh No! This is not a page, please redirect back</h1>} />
         </Switch>
       </>

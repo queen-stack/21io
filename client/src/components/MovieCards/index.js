@@ -19,7 +19,7 @@ import Typography from '@material-ui/core/Typography';
 
 import Auth from '../../utils/auth';
 import {ADD_MOVIE} from '../../utils/mutations';
-import { QUERY_CHECKOUT } from '../../utils/queries';
+import { QUERY_CHECKOUT, QUERY_USER } from '../../utils/queries';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/react-hooks';
 
@@ -68,15 +68,15 @@ const MovieCards = (props) => {
   // styling for the Material UI cards
   const classes = useStyles();
   const movies = props.movies;
-  const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
+  // const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
 
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   const [addMovie, { error }] = useMutation(ADD_MOVIE);
 
-  useEffect(() => {
-    return () => saveMovieIds(savedMovieIds);
-  });
+  // useEffect(() => {
+  //   return () => saveMovieIds(savedMovieIds);
+  // });
 
   useEffect(() => {
     if (data) {
@@ -95,9 +95,9 @@ const MovieCards = (props) => {
   
   const handleAddClick =  async (movieId) => {
     
-    const foundMovie = movies.find((movie) => movie.id === movieId);
+    const foundMovie = movies.find((movie) => (movie.movieId || movie.id) === movieId);
     // const {_typename, ...foundMovie} = movieToAdd;
-    const movieToAdd = (({ id, title, overview, poster_path }) => ({ id, title, overview, poster_path }))(foundMovie);
+    const movieToAdd = (({ id, title, overview, poster_path }) => ({ movieId, title, overview, poster_path }))(foundMovie);
     // console.log(movieToAdd);
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
@@ -112,8 +112,10 @@ const MovieCards = (props) => {
         throw new Error('something went wrong!');
       }
 
+      alert('Movie has been added to your wishlist!');
+
       // if book successfully saves to user's account, save book id to state
-      setSavedMovieIds([...savedMovieIds, movieToAdd.movieId]);
+      // setSavedMovieIds([...savedMovieIds, movieToAdd.movieId]);
 
     } catch (err) {
       console.error(err);
@@ -121,18 +123,23 @@ const MovieCards = (props) => {
   };
 
   const handlePurchaseClick = async (movieId) => {
-    const foundMovie = movies.find((movie) => movie.id === movieId);
+    const foundMovie = movies.find((movie) => (movie.movieId || movie.id) === movieId);
     // const {_typename, ...foundMovie} = movieToAdd;
-    const movieToPurchase = (({ id, title, overview, poster_path }) => ({ id, title, overview, poster_path }))(foundMovie);
+  
+    const movieToPurchase = (({ movieId, title, overview, poster_path }) => ({ movieId, title, overview, poster_path }))(foundMovie);
     console.log(movieToPurchase);
+    
     try {
       await getCheckout({
         variables: {input: movieToPurchase}
       });
 
+    Auth.purchase(movieToPurchase);
+
     } catch (error) {
       throw new Error('something went wrong!');    
     }
+
   };
 
   // console.log the data to see which titles don't have images
@@ -154,12 +161,12 @@ const MovieCards = (props) => {
         <CardActions disableSpacing>
           <IconButton className={classes.customHoverFocus}
           aria-label="add to wishlist" 
-          onClick={() => handleAddClick(movie.id)} >
+          onClick={() => handleAddClick(movie.movieId || movie.id)} >
             <FavoriteIcon />
           </IconButton>
           <IconButton className={classes.customHoverFocus}
           aria-label="purchase"
-          onClick={() => handlePurchaseClick(movie.id)}
+          onClick={() => handlePurchaseClick(movie.movieId || movie.id)}
            >
             <ShopIcon />
           </IconButton>

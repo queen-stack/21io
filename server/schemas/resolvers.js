@@ -43,7 +43,7 @@ const resolvers = {
       const movie = args.input;
         // generate product id
         const purchase = await stripe.products.create({
-          id: movie.id,
+          id: movie.movieId,
           name: movie.title,
         });
         //generate price id using the product id
@@ -101,7 +101,7 @@ const resolvers = {
           { _id: context.user._id },
           { $addToSet: { 
             wishlist: {
-              movieId: input.id,
+              movieId: input.movieId,
               title: input.title,
               overview: input.overview,
               poster_path: input.poster_path
@@ -109,7 +109,6 @@ const resolvers = {
           }},
           { new: true }
         );
-        console.log('movie added!')
         return updatedUser;
       }
       throw new AuthenticationError('You need to be logged in!')
