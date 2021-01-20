@@ -33,7 +33,7 @@ const typeDefs = gql`
 
     type Query {
         user: User     
-        purchase(_id: ID!): Purchase
+        checkout(input: movieInput): Checkout
     }
 
     type Auth {
@@ -47,6 +47,10 @@ const typeDefs = gql`
         addMovie(input: movieInput): User
         removeMovie(movieId: Int!): User
         purchaseMovie(movieId: Int!): User
+    }
+
+    type Checkout {
+        session: ID
     }
 `;
 

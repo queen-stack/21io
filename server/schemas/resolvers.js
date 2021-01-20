@@ -2,6 +2,7 @@ const { User, Movie, Purchase } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 const { GraphQLScalarType, Kind } = require('graphql');
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const dateScalar = new GraphQLScalarType({
   name: 'Date',
@@ -37,6 +38,34 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
+    checkout: async (parent, args, context) => {
+      const url = new URL(context.headers.referer).origin;
+      const movie = args.input;
+        // generate product id
+        const purchase = await stripe.products.create({
+          id: movie.id,
+          name: movie.title,
+        });
+        //generate price id using the product id
+        const price = await stripe.prices.create({
+          product: purchase.id,
+          unit_amount: 210,
+          currency: "usd",
+        });
+      let line_items = [{
+        price: price.id,
+        quantity: 1
+      }];
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items,
+        mode: 'payment',
+        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${url}/`
+      });
+      return { session: session.id };
+
+    }
   },
 
   Mutation: {
