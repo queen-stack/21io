@@ -61,7 +61,6 @@ const MovieCards = (props) => {
   // styling for the Material UI cards
   const classes = useStyles();
   const movies = props.movies;
-  console.log(movies);
   const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
 
   const [addMovie, { error }] = useMutation(ADD_MOVIE);
@@ -82,7 +81,7 @@ const MovieCards = (props) => {
     const foundMovie = movies.find((movie) => movie.id === movieId);
     // const {_typename, ...foundMovie} = movieToAdd;
     const movieToAdd = (({ id, title, overview, poster_path }) => ({ id, title, overview, poster_path }))(foundMovie);
-    console.log(movieToAdd);
+    // console.log(movieToAdd);
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
       return false;
@@ -147,9 +146,6 @@ const MovieCards = (props) => {
           </Typography>
           <Typography variant="body2" component="p">
               {movie.overview}
-          </Typography>
-          <Typography variant="body2"  component="p">
-            Avg. Rating {movie.vote_average}
           </Typography>
         </CardContent>
         </Collapse>

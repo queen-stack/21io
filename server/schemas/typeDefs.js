@@ -5,8 +5,8 @@ const typeDefs = gql`
 
     type Movie {
         movieId: Int
-        description: String
-        name: String
+        overview: String
+        title: String
         poster_path: String
     }
 

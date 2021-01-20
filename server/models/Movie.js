@@ -6,11 +6,11 @@ const movieSchema = new Schema(
       type: Number,
       required: true,
     },
-    name: {
+    title: {
       type: String,
       required: true,
     },
-    description: {
+    overview: {
       type: String,
       required: true,
     },

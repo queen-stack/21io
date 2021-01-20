@@ -8,16 +8,16 @@ export const QUERY_USER = gql`
             wishlistCount
             wishlist {
                 movieId
-                description
-                name
+                overview
+                title
                 poster_path
             }
             purchaseHistoryCount
             purchaseHistory {
                 moviePurchase {
                     movieId
-                    description
-                    name
+                    overview
+                    title
                     poster_path
                 }
                 purchaseDate

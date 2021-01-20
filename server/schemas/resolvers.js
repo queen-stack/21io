@@ -73,8 +73,8 @@ const resolvers = {
           { $addToSet: { 
             wishlist: {
               movieId: input.id,
-              name: input.title,
-              description: input.overview,
+              title: input.title,
+              overview: input.overview,
               poster_path: input.poster_path
             } 
           }},
