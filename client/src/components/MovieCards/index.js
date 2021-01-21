@@ -169,6 +169,7 @@ const MovieCards = (props) => {
             </IconButton>
           </Tooltip>
           }
+          {inWishlist &&
           <Tooltip title="Purchase Movie">
             <IconButton className={classes.customHoverFocus}
             aria-label="purchase"
@@ -177,7 +178,7 @@ const MovieCards = (props) => {
               <ShopIcon />
           </IconButton>
           </Tooltip>
-
+          }
           <Tooltip title="See Movie Description">
             <IconButton
               className={clsx(classes.expand, {
