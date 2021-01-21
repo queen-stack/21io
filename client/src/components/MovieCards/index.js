@@ -137,8 +137,6 @@ const MovieCards = (props) => {
         variables: {input: movieToPurchase}
       });
 
-    Auth.purchase(movieToPurchase);
-
     } catch (error) {
       throw new Error('something went wrong!');    
     }
