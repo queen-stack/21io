@@ -20,7 +20,7 @@ const typeDefs = gql`
     }
   
     input movieInput {
-        movieId: ID
+        movieId: Int
         title: String
         overview: String
         poster_path: String

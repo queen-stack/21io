@@ -42,16 +42,16 @@ const resolvers = {
       const url = new URL(context.headers.referer).origin;
       const movie = args.input;
         // generate product id
-        const purchase = await stripe.products.create({
-          id: movie.movieId,
-          name: movie.title,
-        });
-        //generate price id using the product id
-        const price = await stripe.prices.create({
-          product: purchase.id,
-          unit_amount: 210,
-          currency: "usd",
-        });
+      const purchase = await stripe.products.create({
+        id: movie.movieId,
+        name: movie.title,
+      });
+      //generate price id using the product id
+      const price = await stripe.prices.create({
+        product: purchase.id,
+        unit_amount: 210,
+        currency: "usd",
+      });
       let line_items = [{
         price: price.id,
         quantity: 1
