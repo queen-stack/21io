@@ -24,8 +24,6 @@ import { useLazyQuery } from '@apollo/react-hooks';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
-
-
 // the useStyles is for the material UI styling, this is imported from "import { makeStyles } from '@material-ui/core/styles'"
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,9 +59,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
 const inWishlist = window.location.pathname === "/wishlist"; 
-console.log(inWishlist);
 
 // DiscoverMovieList() imports all the titles to the landing page
 // This uses the Material UI cards -> https://material-ui.com/components/cards/#Media
@@ -89,7 +85,6 @@ const MovieCards = (props) => {
     }
   }, [data]);
 
-
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
@@ -98,10 +93,8 @@ const MovieCards = (props) => {
   
   const handleAddClick =  async (movieId) => {
     
-    const foundMovie = movies.find((movie) => (movie.movieId || movie.id) === movieId);
-    // const {_typename, ...foundMovie} = movieToAdd;
+    const foundMovie = movies.find((movie) => movie.id === movieId);
     const movieToAdd = (({ id, title, overview, poster_path }) => ({ movieId, title, overview, poster_path }))(foundMovie);
-    // console.log(movieToAdd);
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
       return false;
@@ -117,7 +110,7 @@ const MovieCards = (props) => {
 
       alert('Movie has been added to your wishlist!');
 
-      // if book successfully saves to user's account, save book id to state
+      // if movie successfully saves to user's account, save movie id to state
       // setSavedMovieIds([...savedMovieIds, movieToAdd.movieId]);
 
     } catch (err) {
@@ -126,11 +119,8 @@ const MovieCards = (props) => {
   };
 
   const handlePurchaseClick = async (movieId) => {
-    const foundMovie = movies.find((movie) => (movie.movieId || movie.id) === movieId);
-    // const {_typename, ...foundMovie} = movieToAdd;
-  
+    const foundMovie = movies.find((movie) => movie.movieId === movieId);
     const movieToPurchase = (({ movieId, title, overview, poster_path }) => ({ movieId, title, overview, poster_path }))(foundMovie);
-    console.log(movieToPurchase);
     
     try {
       await getCheckout({
@@ -164,7 +154,7 @@ const MovieCards = (props) => {
           <Tooltip title="Add to Wishlist">
             <IconButton className={classes.customHoverFocus}
             aria-label="add to wishlist" 
-            onClick={() => handleAddClick(movie.movieId || movie.id)} >
+            onClick={() => handleAddClick(movie.id)} >
               <FavoriteIcon />
             </IconButton>
           </Tooltip>
@@ -173,7 +163,7 @@ const MovieCards = (props) => {
           <Tooltip title="Purchase Movie">
             <IconButton className={classes.customHoverFocus}
             aria-label="purchase"
-            onClick={() => handlePurchaseClick(movie.movieId || movie.id)}
+            onClick={() => handlePurchaseClick(movie.movieId)}
             >
               <ShopIcon />
           </IconButton>
