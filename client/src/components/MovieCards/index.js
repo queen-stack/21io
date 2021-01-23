@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const inWishlist = window.location.pathname === "/wishlist"; 
+let inWishlist = window.location.pathname === "/wishlist"; 
 
 // DiscoverMovieList() imports all the titles to the landing page
 // This uses the Material UI cards -> https://material-ui.com/components/cards/#Media
@@ -119,9 +119,10 @@ const MovieCards = (props) => {
   };
 
   const handlePurchaseClick = async (movieId) => {
+    //console.log("In handlePurchaseClick: " + movieId);
     const foundMovie = movies.find((movie) => movie.movieId === movieId);
     const movieToPurchase = (({ movieId, title, overview, poster_path }) => ({ movieId, title, overview, poster_path }))(foundMovie);
-    
+    //console.log("movieToPurchase: " + JSON.stringify(movieToPurchase));
     try {
       await getCheckout({
         variables: {input: movieToPurchase}
@@ -203,3 +204,4 @@ const MovieCards = (props) => {
 }
 
 export default MovieCards
+
