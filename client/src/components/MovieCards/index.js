@@ -67,16 +67,11 @@ const MovieCards = (props) => {
   // styling for the Material UI cards
   const classes = useStyles();
   const movies = props.movies;
-  // const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
 
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   const [addMovie, { error }] = useMutation(ADD_MOVIE);
   const [purchaseMovie, { e }] = useMutation(PURCHASE_MOVIE);
-
-  // useEffect(() => {
-  //   return () => saveMovieIds(savedMovieIds);
-  // });
 
   useEffect(() => {
     if (data) {
@@ -111,16 +106,12 @@ const MovieCards = (props) => {
 
       alert('Movie has been added to your wishlist!');
 
-      // if movie successfully saves to user's account, save movie id to state
-      // setSavedMovieIds([...savedMovieIds, movieToAdd.movieId]);
-
     } catch (err) {
       console.error(err);
     }
   };
 
   const handlePurchaseClick = async (movieId) => {
-    //console.log("In handlePurchaseClick: " + movieId);
     const foundMovie = movies.find((movie) => movie.movieId === movieId);
     const movieToPurchase = (({ movieId, title, overview, poster_path }) => ({ movieId, title, overview, poster_path }))(foundMovie);
 
@@ -128,8 +119,6 @@ const MovieCards = (props) => {
     if (!token) {
       return false;
     }
-
-    //console.log("movieToPurchase: " + JSON.stringify(movieToPurchase));
     try {
       await purchaseMovie({
         variables: {movieId: movieToPurchase.movieId}
@@ -151,8 +140,6 @@ const MovieCards = (props) => {
     }
 
   };
-
-  // console.log the data to see which titles don't have images
 
   // -=- Return notes -=-
   // CardActions needs to have the key, if this does not have that it will throw a warning

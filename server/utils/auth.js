@@ -16,8 +16,6 @@ module.exports = {
         .trim();
     }
 
-    console.log('token', token);
-
     let decodedData; 
     if (!token) {
       return req;
@@ -40,8 +38,7 @@ module.exports = {
     } catch { 
       console.log('Invalid token');
     }
-
-    console.log(req.user);
+    
     return req;
   },
 

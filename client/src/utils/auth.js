@@ -11,9 +11,6 @@ class AuthService {
 
     if (!token) {
       token = localStorage.getItem('id_token');
-      // if (!token) {
-      //   token = localStorage.getItem('oathToken');
-      // }
     }
     return !!token && !this.isTokenExpired(token);
   }
@@ -40,16 +37,9 @@ class AuthService {
     window.location.assign('/');
   }
 
-  oauthLogin(idToken) {
-    // Saves user token to localStorage
-    localStorage.setItem('oauthToken', idToken);
-    window.location.assign('/');
-  }
-
   logout() {
     // Clear user token and profile data from localStorage
     localStorage.clear();
-    // localStorage.removeItem('oauthToken');
 
     // this will reload the page and reset the state of the application
     window.location.assign('/');

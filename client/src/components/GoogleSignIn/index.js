@@ -5,8 +5,7 @@ import { GoogleLogin } from 'react-google-login';
 function GoogleSignIn() {
 
   const onSuccess = (googleUser) => {
-    
-    console.log(googleUser);
+        
     const idToken = googleUser.getAuthResponse().id_token;
     Auth.login(idToken);
     

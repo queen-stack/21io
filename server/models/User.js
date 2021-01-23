@@ -17,7 +17,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    // set wishList to be an array of data that adheres to the movieSchema
+    // set wishlist to be an array of data that adheres to the movieSchema
     wishlist: [Movie.schema],
     purchaseHistory: [Purchase.schema],
   },
@@ -45,8 +45,8 @@ userSchema.methods.isCorrectPassword = async function (password) {
 };
 
 // when we query a user, we'll see a field called `Wish List Count` with the number of wishList movies we have
-userSchema.virtual('wishListCount').get(function () {
-  return this.wishList.length;
+userSchema.virtual('wishlistCount').get(function () {
+  return this.wishlist.length;
 });
 
 // when we query a user, we'll see a field called `Purchase History Count` with the number of movies we have Purchased

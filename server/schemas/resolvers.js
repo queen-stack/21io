@@ -21,7 +21,6 @@ const dateScalar = new GraphQLScalarType({
   },
 });
 
-
 const resolvers = {
 
   Date: dateScalar,
@@ -46,6 +45,7 @@ const resolvers = {
         id: movie.movieId,
         name: movie.title,
       });
+
       //generate price id using the product id
       const price = await stripe.prices.create({
         product: purchase.id,
@@ -69,7 +69,6 @@ const resolvers = {
   },
 
   Mutation: {
-    // OK
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
@@ -77,7 +76,6 @@ const resolvers = {
       return { token, user };
     },
 
-    // OK
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -114,7 +112,6 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!')
     },
 
-    // OK
     removeMovie: async (parent, args, context) => {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
@@ -134,8 +131,6 @@ const resolvers = {
         var updatedUser = await User.findById(
           { _id: context.user._id }
         );
-        console.log(args.movieId);
-        // // If no user found, throw an exception.  TBD
 
         // // find the movie in the user's wishlist based on the movieId passed in in args.
         let matchedMovie = updatedUser.wishlist.find((movie) => movie.movieId === args.movieId);
@@ -147,11 +142,9 @@ const resolvers = {
           { new: true }
         );
         
-        // const purchase = await Purchase.create({ moviePurchase: movieToPurchase });
+        // // create the purchase and add that purchase to the user's purchase history.
         const purchase = await Purchase.create({ moviePurchase: matchedMovie });
 
-        console.log("purchase" , updatedUser)
-        // // create the purchase and add that purchase to the user's purchase history.
         updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { purchaseHistory: purchase } },

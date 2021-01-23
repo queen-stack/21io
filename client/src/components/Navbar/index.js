@@ -39,9 +39,6 @@ export default function Navbar(props) {
 
   const classes = useStyles();
 
-  // this is for the logged in user
-  // const loggedIn = Auth.loggedIn();
-
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.background}>
@@ -49,17 +46,13 @@ export default function Navbar(props) {
             <Button color="inherit" href='/'><img alt='21io' className="logoImage" src={navLogo}></img></Button>
             <Button color="inherit" href='/search'>Search for Movies</Button>
             { Auth.loggedIn() ? (
-              <>
-            
-                <Button color="inherit" href='/wishlist'>Wish List</Button>
-                <Button color="inherit" href='/purchase-history'>History</Button>
-            
-
+            <>
+            <Button color="inherit" href='/wishlist'>Wish List</Button>
+            <Button color="inherit" href='/purchase-history'>History</Button>
             <Button color="inherit" href="/" onClick={()=> Auth.logout()}>Logout</Button>
             </>
             ):(
             <>
-          
               <Button color="inherit" href="/signup">Signup</Button>
               <Button color="inherit" href="/login">Login</Button>
             </>
