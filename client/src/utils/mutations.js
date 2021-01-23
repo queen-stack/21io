@@ -48,3 +48,30 @@ export const ADD_MOVIE = gql`
   }
 `;
 
+export const PURCHASE_MOVIE = gql`
+  mutation purchaseMove($movieId: Int!) {
+    purchaseMovie(movieId: $movieId) {
+      _id
+      email
+      wishlistCount
+      wishlist {
+        movieId
+        overview
+        title
+        poster_path
+      }
+      purchaseHistoryCount
+      purchaseHistory {
+        moviePurchase {
+          movieId
+          overview
+          title
+          poster_path
+        }
+        purchaseDate
+      }
+    }
+  }
+`;
+
+

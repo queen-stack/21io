@@ -12,7 +12,9 @@ function Wishlist() {
 
   if (data) {
     user = data.user;
+    console.log(user.wishlist);
   }
+
 
   return (
     <>
