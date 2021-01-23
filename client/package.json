@@ -26,6 +26,8 @@
     "react-scripts": "4.0.1",
     "react-slideshow-image": "^3.4.3",
     "stripe": "^8.131.1",
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.6",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.3",
     "workbox-broadcast-update": "^5.1.3",
@@ -45,7 +47,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-sw": "workbox copyLibraries build/ && workbox injectManifest workbox-config.js && http-server build/ -c 0"
   },
   "eslintConfig": {
     "extends": [

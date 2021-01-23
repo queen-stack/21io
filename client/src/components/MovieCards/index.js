@@ -16,6 +16,8 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 
+import { v4 as uuidv4 } from 'uuid';
+
 import Auth from '../../utils/auth';
 import {ADD_MOVIE} from '../../utils/mutations';
 import { QUERY_CHECKOUT } from '../../utils/queries';
@@ -140,8 +142,8 @@ const MovieCards = (props) => {
   return (
     <>
     {props.movies.map((movie, index) => (
-    <Card className={classes.root} key={movie.id} id='movieCard'>
-      <CardActionArea key={movie.id}>
+    <Card className={classes.root} key={uuidv4()} id='movieCard'>
+      <CardActionArea key={uuidv4()}>
         <CardMedia
           className={classes.media}
           image={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}

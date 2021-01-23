@@ -12,7 +12,7 @@
 
     <meta name="google-signin-client_id" content="119936630598-7e709479qoc6t1a1es7tmggjjlph21di.apps.googleusercontent.com">
 
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="manifest" href="/manifest.json" />
 
 
       <!-- Import custom stylesheet, the index.css is the custom stylesheet -->
@@ -28,6 +28,13 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      const isProduction = ('%NODE_ENV%' === 'production');
+
+      if (isProduction && 'serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+      }
+    </script>
   </body>
 </html>
 
