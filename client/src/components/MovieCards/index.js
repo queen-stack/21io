@@ -19,7 +19,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { v4 as uuidv4 } from 'uuid';
 
 import Auth from '../../utils/auth';
-import {ADD_MOVIE} from '../../utils/mutations';
+import {ADD_MOVIE, PURCHASE_MOVIE} from '../../utils/mutations';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/react-hooks';
@@ -74,6 +74,7 @@ const MovieCards = (props) => {
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   const [addMovie, { error }] = useMutation(ADD_MOVIE);
+  const [purchaseMovie, { e }] = useMutation(PURCHASE_MOVIE);
 
   // useEffect(() => {
   //   return () => saveMovieIds(savedMovieIds);
@@ -124,7 +125,24 @@ const MovieCards = (props) => {
     //console.log("In handlePurchaseClick: " + movieId);
     const foundMovie = movies.find((movie) => movie.movieId === movieId);
     const movieToPurchase = (({ movieId, title, overview, poster_path }) => ({ movieId, title, overview, poster_path }))(foundMovie);
+
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    if (!token) {
+      return false;
+    }
+
     //console.log("movieToPurchase: " + JSON.stringify(movieToPurchase));
+    try {
+      await purchaseMovie({
+        variables: {movieId: movieToPurchase.movieId}
+      });
+      if (e) {
+        throw new Error('something went wrong!');
+      }
+    } catch (error) {
+      throw new Error('something went wrong!');    
+    }
+
     try {
       await getCheckout({
         variables: {input: movieToPurchase}
