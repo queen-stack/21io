@@ -1,4 +1,7 @@
-importScripts("wordbox-v3.6.3/workbox-sw.js");
+// npm run start-sw -> this makes a service worker build
+// npm run build -> this makes a production build for offline. THis goes to the "build" folder
+
+importScripts("workbox-v3.6.3/workbox-sw.js");
 
 workboxConfig.setConfig({modulePathPrefix: 'workbox-v3.6.3/'})
 
