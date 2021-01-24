@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 
 import clsx from 'clsx';
@@ -20,11 +20,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 import Auth from '../../utils/auth';
 import {ADD_MOVIE, PURCHASE_MOVIE} from '../../utils/mutations';
-import { QUERY_CHECKOUT } from '../../utils/queries';
-import { loadStripe } from '@stripe/stripe-js';
-import { useLazyQuery } from '@apollo/react-hooks';
-
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 // the useStyles is for the material UI styling, this is imported from "import { makeStyles } from '@material-ui/core/styles'"
 const useStyles = makeStyles((theme) => ({
@@ -69,24 +64,9 @@ const MovieCards = (props) => {
   // styling for the Material UI cards
   const classes = useStyles();
   const movies = props.movies;
-  // const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
-
-  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   const [addMovie, { error }] = useMutation(ADD_MOVIE);
   const [purchaseMovie, { e }] = useMutation(PURCHASE_MOVIE);
-
-  // useEffect(() => {
-  //   return () => saveMovieIds(savedMovieIds);
-  // });
-
-  useEffect(() => {
-    if (data) {
-      stripePromise.then((res) => {
-        res.redirectToCheckout({ sessionId: data.checkout.session });
-      });
-    }
-  }, [data]);
 
   const [expanded, setExpanded] = useState(false);
 
@@ -113,16 +93,12 @@ const MovieCards = (props) => {
 
       alert('Movie has been added to your wishlist!');
 
-      // if movie successfully saves to user's account, save movie id to state
-      // setSavedMovieIds([...savedMovieIds, movieToAdd.movieId]);
-
     } catch (err) {
       console.error(err);
     }
   };
 
   const handlePurchaseClick = async (movieId) => {
-    //console.log("In handlePurchaseClick: " + movieId);
     const foundMovie = movies.find((movie) => movie.movieId === movieId);
     const movieToPurchase = (({ movieId, title, overview, poster_path }) => ({ movieId, title, overview, poster_path }))(foundMovie);
 
@@ -131,7 +107,6 @@ const MovieCards = (props) => {
       return false;
     }
 
-    //console.log("movieToPurchase: " + JSON.stringify(movieToPurchase));
     try {
       await purchaseMovie({
         variables: {movieId: movieToPurchase.movieId}
@@ -139,15 +114,6 @@ const MovieCards = (props) => {
       if (e) {
         throw new Error('something went wrong!');
       }
-    } catch (error) {
-      throw new Error('something went wrong!');    
-    }
-
-    try {
-      await getCheckout({
-        variables: {input: movieToPurchase}
-      });
-
     } catch (error) {
       throw new Error('something went wrong!');    
     }

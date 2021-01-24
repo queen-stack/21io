@@ -38,7 +38,7 @@ function App() {
           <Route exact path='/signup' component={Signup} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/wishlist' component={Wishlist} />
-          <Route exact path='/purchase-history' component={PurchaseHistory} />
+          <Route exact path='/watched' component={PurchaseHistory} />
           <Route exact path="/success" component={Success} />
           <Route render={() => <h1 className='display-2'>Oh No! This is not a page, please redirect back</h1>} />
         </Switch>
