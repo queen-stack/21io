@@ -73,7 +73,7 @@ export default function Navbar(props) {
       <AppBar position="static" className={classes.background}>
         <Toolbar className='navbar-comp'>
             <Button color="inherit" href='/'><img alt='21io' className="logoImage" src={navLogo}></img></Button>
-            <Button color="inherit" href='/search'>Search for Movies</Button>
+            <Button color="inherit" href='/search'>Search Movies</Button>
             { Auth.loggedIn() ? (
               <>
             
