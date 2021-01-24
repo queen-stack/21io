@@ -147,9 +147,9 @@ const MovieCards = (props) => {
           </Tooltip>
           }
           {inWishlist &&
-          <Tooltip title="Purchase Movie">
+          <Tooltip title="Watch Movie">
             <IconButton className={classes.customHoverFocus}
-            aria-label="purchase"
+            aria-label="watch"
             onClick={() => handlePurchaseClick(movie.movieId)}
             >
               <ShopIcon />
