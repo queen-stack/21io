@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -11,6 +11,9 @@
     />
 
     <meta name="google-signin-client_id" content="119936630598-7e709479qoc6t1a1es7tmggjjlph21di.apps.googleusercontent.com">
+
+    <link rel="manifest" href="/manifest.json" />
+
 
       <!-- Import custom stylesheet, the index.css is the custom stylesheet -->
       <!--<link rel="stylesheet" href="index.css" />-->
@@ -21,12 +24,17 @@
       <!-- Material UI Icons, run -> npm install @material-ui/icons -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-      <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
     <title>21io</title>
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      const isProduction = ('%NODE_ENV%' === 'production');
+
+      if (isProduction && 'serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+      }
+    </script>
   </body>
 </html>
 

@@ -6,7 +6,9 @@ import { QUERY_USER } from "../utils/queries";
 import Grid from '@material-ui/core/Grid';
 import MovieCards from '../components/MovieCards';
 
-function Wishlist() {
+import { v4 as uuidv4 } from 'uuid';
+
+function Wishlist(props) {
   const { data } = useQuery(QUERY_USER);
   let user;
 
@@ -26,7 +28,7 @@ function Wishlist() {
             <Grid container spacing={0}>
             <h2>Wishlist for {user.email}</h2>
               <Grid container item xs={12} spacing={0}>
-              <MovieCards movies={user.wishlist}/>
+              <MovieCards movies={user.wishlist} key={uuidv4()}/>
               </Grid>
             </Grid>
       </section>
