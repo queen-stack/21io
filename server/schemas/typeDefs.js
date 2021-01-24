@@ -33,7 +33,7 @@ const typeDefs = gql`
 
     type Query {
         user: User     
-        checkout(input: movieInput): Checkout
+        checkout: Checkout
     }
 
     type Auth {

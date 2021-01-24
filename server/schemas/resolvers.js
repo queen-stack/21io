@@ -40,11 +40,11 @@ const resolvers = {
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-      const movie = args.input;
+      const purchaseID = Math.floor(Math.random()*(10000 - 1) + 1);
         // generate product id
       const purchase = await stripe.products.create({
-        id: movie.movieId,
-        name: movie.title,
+        id: purchaseID,
+        name: "donation",
       });
       //generate price id using the product id
       const price = await stripe.prices.create({
