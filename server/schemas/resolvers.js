@@ -130,32 +130,28 @@ const resolvers = {
 
     purchaseMovie: async (parent, args, context) => {
       if (context.user) {
-
         // look up the user based on the user ID in the call context
         var updatedUser = await User.findById(
           { _id: context.user._id }
         );
+        console.log(args.movieId);
+        // // If no user found, throw an exception.  TBD
 
-        // If no user found, throw an exception.  TBD
+        // // find the movie in the user's wishlist based on the movieId passed in in args.
+        let matchedMovie = updatedUser.wishlist.find((movie) => movie.movieId === args.movieId);
 
-        // find the movie in the user's wishlist based on the movieId passed in in args.
-        let movieToPurchase = updatedUser.wishlist.find(function (item) {
-          console.log("item.movieId: " + item.movieId + "  args.movieId: " + args.movieId);
-          return item.movieId === args.movieId;
-        });
-
-        // with the movie object found in the wishlist, remove that movie from the wishlist...
+        // // with the movie object found in the wishlist, remove that movie from the wishlist...
         updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $pull: { wishList: { movieId: args.movieId } } },
+          { $pull: { wishlist: { movieId: args.movieId } } },
           { new: true }
         );
-
+        
         // const purchase = await Purchase.create({ moviePurchase: movieToPurchase });
-        const purchase = await Purchase.create({ moviePurchase: movieToPurchase });
+        const purchase = await Purchase.create({ moviePurchase: matchedMovie });
 
         console.log("purchase" , updatedUser)
-        // create the purchase and add that purchase to the user's purchase history.
+        // // create the purchase and add that purchase to the user's purchase history.
         updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { purchaseHistory: purchase } },
