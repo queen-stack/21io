@@ -17,7 +17,7 @@
    
 ## Description
 
-🔍 A MERN stack application, 21io is an application that allows it's users to login, search for & save movies to a library then pay for a movie if they choose to stream it when online.
+🔍 A MERN stack application, 21io is an application that allows it's users to login, search for & save movies to a library - optionally we welcome you to donate and support our site!
 
 **[Deployed Application](https://movie-21io.herokuapp.com/)**
   
