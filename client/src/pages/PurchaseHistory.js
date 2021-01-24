@@ -70,7 +70,7 @@ function PurchaseHistory() {
       <>
       <section className='movie-section'>
         <Grid container spacing={0}>
-        <h2>Purchase History for {user.email}</h2>
+        <h2>Watched movie titles for {user.email}</h2>
           <Grid container item xs={12} spacing={0}>
             {user.purchaseHistory.map((history, index) => (
             <Card className={classes.root} key={history.moviePurchase.id} id='movieCard'>
@@ -117,7 +117,7 @@ function PurchaseHistory() {
       </section>
       </>
       ) : ( 
-    <h2> Your purchases will be listed here!</h2>
+    <h2> Your watched titles will be listed here!</h2>
     )}
   </div>
   </>
